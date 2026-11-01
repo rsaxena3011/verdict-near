@@ -1,0 +1,3301 @@
+{
+ "product": "VERDICT",
+ "run_at": "2026-10-26T11:29:25.745261+00:00",
+ "stores": [
+  "verdict_locks",
+  "verdict_drafts",
+  "verdict_reviews"
+ ],
+ "investigator_queries": [
+  {
+   "sql": "SELECT * FROM verdict_locks.findings",
+   "rows": 2
+  },
+  {
+   "sql": "SELECT * FROM verdict_drafts.findings",
+   "rows": 2
+  },
+  {
+   "sql": "SELECT * FROM verdict_reviews.findings",
+   "rows": 1
+  }
+ ],
+ "challenger_queries": [
+  {
+   "sql": "SELECT * FROM verdict_locks.findings",
+   "rows": 2
+  },
+  {
+   "sql": "SELECT * FROM verdict_drafts.findings",
+   "rows": 2
+  },
+  {
+   "sql": "SELECT * FROM verdict_reviews.findings",
+   "rows": 1
+  }
+ ],
+ "model_receipts": [
+  {
+   "step": "investigator",
+   "source": "model",
+   "requested_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+   "routed_model": "nvidia/nemotron-3-ultra-550b-a55b",
+   "usage": {
+    "prompt_tokens": 2231,
+    "completion_tokens": 1277,
+    "total_tokens": 3508
+   },
+   "meterless": {
+    "schema": "meterless.compute_receipt.v1",
+    "receipt_id": "rcpt_req_473pid40",
+    "decision_id": "req_473pid40",
+    "requested_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+    "provider_model": "meterless/auto",
+    "routed_model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "winning_route": {
+     "model": "nvidia/nemotron-3-ultra-550b-a55b",
+     "label": "Nemotron 3 Ultra 550B A55B",
+     "provider": "nvidia",
+     "kind": "cloud",
+     "tier": "C"
+    },
+    "requires_review": false,
+    "phases": [
+     {
+      "phase": "tool_call_format",
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "ms": 45003,
+      "tokensIn": 2231,
+      "tokensOut": 1277,
+      "outputTps": 28.375886052040975,
+      "coherence": 0.24793388429752067,
+      "tier": "A",
+      "reflex_decided_in_ms": 0.03
+     }
+    ],
+    "usage": {
+     "input_tokens": 2231,
+     "output_tokens": 1277,
+     "total_tokens": 3508,
+     "output_tps": 28.375886052040975,
+     "latency_ms": 45003
+    },
+    "cost": {
+     "actual_usd": 0,
+     "naive_usd": 0,
+     "baseline": {
+      "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+      "label": "Nemotron 3.5 Super VL 120B A12B",
+      "source": "mode-default-frontier"
+     },
+     "verifier_usd": 0,
+     "race_overhead_usd": 0
+    },
+    "savings": {
+     "amount": 0,
+     "currency": "USD",
+     "vs": "Nemotron 3.5 Super VL 120B A12B",
+     "baseline_source": "mode-default-frontier"
+    },
+    "cache": {
+     "status": "miss",
+     "losers_reclaimed": 1,
+     "partials_reclaimed": 0
+    },
+    "privacy": {
+     "path": "cloud-ok",
+     "redaction": {
+      "applied": false,
+      "spans": 0
+     }
+    },
+    "from_cache": false,
+    "losers_reclaimed": 1,
+    "receipt": {
+     "app": "verdict",
+     "app_policy": {
+      "app": "verdict",
+      "cross_check": "auto",
+      "has_rule": true,
+      "lanes": null,
+      "mode_coerced": false,
+      "premium_budget": null,
+      "privacy": "cloud-ok",
+      "race_width": 6,
+      "requested_mode": "auto",
+      "routed_mode": "auto"
+     },
+     "autopilot": {
+      "ctx_dropped": [],
+      "ctx_unfilterable": false,
+      "envelope": {
+       "allocatable_mb": 0,
+       "pressure": "unknown",
+       "remaining_mb": 0,
+       "used_mb": 0
+      },
+      "needs": {
+       "coding": true,
+       "tools": false,
+       "vision": false
+      },
+      "prompt_tokens": 569,
+      "scout": {
+       "candidates": [
+        {
+         "id": "CODE_FORMATTER",
+         "score": 6
+        },
+        {
+         "id": "WRITER",
+         "score": 5
+        },
+        {
+         "id": "DESTRUCTIVE",
+         "score": 4
+        }
+       ],
+       "category": "Quality",
+       "confident": false,
+       "mode": "CODE_FORMATTER",
+       "ms": 0.81,
+       "score": 6,
+       "source": "detected",
+       "tier": "A"
+      },
+      "tier_hint": null,
+      "why": [
+       "scout read CODE_FORMATTER (not confident \u2014 no tier opinion)",
+       "a coder is preferred",
+       "~569 prompt tokens \u2014 lanes whose slot cannot hold them are not asked"
+      ]
+     },
+     "bar": null,
+     "budget_degrade": null,
+     "cache": {
+      "losers_reclaimed": 1,
+      "partials_reclaimed": 0,
+      "status": "miss"
+     },
+     "consensus": {
+      "agree": 2,
+      "coherence": 0.248,
+      "detail": "2 of 2 models broadly agreed",
+      "label": "partial agreement",
+      "level": "mixed",
+      "raced": 2,
+      "tone": "amber",
+      "verified": null
+     },
+     "consensus_escalation": null,
+     "cost": {
+      "actual_usd": 0,
+      "baseline": {
+       "label": "Nemotron 3.5 Super VL 120B A12B",
+       "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+       "source": "mode-default-frontier"
+      },
+      "naive_usd": 0,
+      "race_overhead_usd": 0,
+      "verifier_usd": 0
+     },
+     "created_at": 1793014043972,
+     "cross_check": {
+      "app": "verdict",
+      "blocking": false,
+      "checks": [],
+      "recommended_action": "allow",
+      "reflex_ms": 0.2,
+      "risk_level": "low",
+      "skip_reason": "tier_a_chat",
+      "status": "skipped",
+      "verifier": "none",
+      "verifier_model": null,
+      "verifier_ms": 0,
+      "verifier_ran": false,
+      "verifier_verdict": null
+     },
+     "debate": {
+      "budget_ms": 2000,
+      "ran": false,
+      "reason": "post_budget_exhausted",
+      "winner": null
+     },
+     "decision_id": "req_473pid40",
+     "deliberation": null,
+     "egress": {
+      "coverage": "pattern_floor",
+      "destination": "nvidia",
+      "never_eligible": [],
+      "sent": {
+       "context_sources": [
+        "messages",
+        "hmem:3 records"
+       ],
+       "prompt_chars": 1845,
+       "redacted": []
+      },
+      "withheld": []
+     },
+     "eligible": null,
+     "error": "",
+     "fusion": null,
+     "gen_verifier": {
+      "abstained": 2,
+      "batches": 1,
+      "batches_timed_out": 0,
+      "best": null,
+      "best_index": null,
+      "best_score": null,
+      "judge_local": false,
+      "judge_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "judge_was_racer": false,
+      "ms": 5418,
+      "parse_ok": false,
+      "ran": true,
+      "ranked": [
+       {
+        "judge_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "reason": "",
+        "score": null
+       },
+       {
+        "judge_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+        "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+        "reason": "",
+        "score": null
+       }
+      ],
+      "reason": "unparseable",
+      "scale": 100,
+      "scored_of": 2,
+      "shortlist_of": 2,
+      "tokensIn": 2040,
+      "tokensOut": 440
+     },
+     "graded_weight": null,
+     "hmem": {
+      "ids": [
+       "mem_mvkpoe14_20i5",
+       "mem_mvkq5rl5_b82x",
+       "mem_mvkpz3dj_4lx8"
+      ],
+      "injected": 3,
+      "reason": "retrieved 3 memories",
+      "strategy": "comprehensive",
+      "top_score": 0.763
+     },
+     "host_pressure": {
+      "battery": null,
+      "pressure": {
+       "battery": {
+        "hard": 0.5,
+        "label": "nominal",
+        "score": 0.18,
+        "sensor": "battery%, charging",
+        "soft": 0.3
+       },
+       "cpu": {
+        "hard": 0.9,
+        "label": "nominal",
+        "score": 0.34,
+        "sensor": "30s load avg",
+        "soft": 0.7
+       },
+       "gpu": {
+        "hard": 0.92,
+        "label": "nominal",
+        "score": 0.38,
+        "sensor": "GPU + VRAM",
+        "soft": 0.75
+       },
+       "memory": {
+        "hard": 0.85,
+        "label": "warm",
+        "score": 0.51,
+        "sensor": "committed/swap",
+        "soft": 0.7
+       },
+       "network": {
+        "hard": 0.85,
+        "label": "nominal",
+        "score": 0.12,
+        "sensor": "RTT to providers",
+        "soft": 0.5
+       },
+       "quota": {
+        "hard": 0.95,
+        "label": "nominal",
+        "score": 0.28,
+        "sensor": "per-key window",
+        "soft": 0.8
+       },
+       "thermal": {
+        "hard": 0.8,
+        "label": "nominal",
+        "score": 0.22,
+        "sensor": "thermal API",
+        "soft": 0.55
+       }
+      },
+      "thermal": "nominal"
+     },
+     "job": null,
+     "mcp": null,
+     "method": null,
+     "mode": "auto",
+     "optimistic": null,
+     "phases": [
+      {
+       "coherence": 0.24793388429752067,
+       "model": "nvidia/nemotron-3-ultra-550b-a55b",
+       "ms": 45003,
+       "outputTps": 28.375886052040975,
+       "phase": "tool_call_format",
+       "reflex_decided_in_ms": 0.03,
+       "tier": "A",
+       "tokensIn": 2231,
+       "tokensOut": 1277
+      }
+     ],
+     "privacy": {
+      "path": "cloud-ok",
+      "redaction": {
+       "applied": false,
+       "spans": 0
+      }
+     },
+     "prompt_preview": "LOCKS:\n[{\"finding_id\":\"LK-001\",\"claim\":\"The cafe's closing time is 22:00, not 23:00.\",\"quote\":\"The cafe closes at 22:00 sharp, every day.\",\"document_id\":\"locks-v3\",\"locator\":\"secti",
+     "quality_race": null,
+     "reasoning_scaffold": null,
+     "receipt_id": "rcpt_req_473pid40",
+     "refine": null,
+     "request_id": "chatcmpl-f73dd9c6-04eb-4514-b7dd-ecc9f16e353e",
+     "requested_mode": "meterless/auto",
+     "routing": {
+      "confidence": 0.005,
+      "escalated": null,
+      "escalated_on_divergence": false,
+      "hedge": null,
+      "hedges_skipped": 0,
+      "of": 6,
+      "policy": "learned-router",
+      "predicted": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+      "reason": "uncertain-explore",
+      "width": 6,
+      "winner": "nvidia/nemotron-3-ultra-550b-a55b"
+     },
+     "savings": {
+      "amount": 0,
+      "baseline_source": "mode-default-frontier",
+      "currency": "USD",
+      "vs": "Nemotron 3.5 Super VL 120B A12B"
+     },
+     "schema": "meterless.compute_receipt.v1",
+     "score": null,
+     "scorecard": null,
+     "status": "ok",
+     "summary": "ok \u00b7 Nemotron 3 Ultra 550B A55B \u00b7 miss \u00b7 $0.0000 saved",
+     "synthesis": {
+      "aggregator_model": "nvidia/nemotron-3-super-120b-a12b",
+      "error": "nvidia_404: {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function 'ac74040f-9fc9-4c5e-ac74-279ba5161d69': Not found for account 'TrnKQT3pnNltiRMQVV3mnujgeK7_AKCsloJU2A9saM8'\"}",
+      "ran": false
+     },
+     "test_time_compute": null,
+     "tool_degraded": null,
+     "unmet": null,
+     "usage": {
+      "input_tokens": 2231,
+      "latency_ms": 45003,
+      "output_tokens": 1277,
+      "output_tps": 28.375886052040975,
+      "total_tokens": 3508
+     },
+     "verdict": null,
+     "verification": null,
+     "winning_route": {
+      "kind": "cloud",
+      "label": "Nemotron 3 Ultra 550B A55B",
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "provider": "nvidia",
+      "tier": "C"
+     }
+    },
+    "receipt_envelope": {
+     "body": {
+      "llama_cpp_ref": "08659901c43b51de735740f1cf61bb82fbe0c4e4",
+      "manifest_hash": "",
+      "receipt": {
+       "app": "verdict",
+       "app_policy": {
+        "app": "verdict",
+        "cross_check": "auto",
+        "has_rule": true,
+        "lanes": null,
+        "mode_coerced": false,
+        "premium_budget": null,
+        "privacy": "cloud-ok",
+        "race_width": 6,
+        "requested_mode": "auto",
+        "routed_mode": "auto"
+       },
+       "autopilot": {
+        "ctx_dropped": [],
+        "ctx_unfilterable": false,
+        "envelope": {
+         "allocatable_mb": 0,
+         "pressure": "unknown",
+         "remaining_mb": 0,
+         "used_mb": 0
+        },
+        "needs": {
+         "coding": true,
+         "tools": false,
+         "vision": false
+        },
+        "prompt_tokens": 569,
+        "scout": {
+         "candidates": [
+          {
+           "id": "CODE_FORMATTER",
+           "score": 6
+          },
+          {
+           "id": "WRITER",
+           "score": 5
+          },
+          {
+           "id": "DESTRUCTIVE",
+           "score": 4
+          }
+         ],
+         "category": "Quality",
+         "confident": false,
+         "mode": "CODE_FORMATTER",
+         "ms": 0.81,
+         "score": 6,
+         "source": "detected",
+         "tier": "A"
+        },
+        "tier_hint": null,
+        "why": [
+         "scout read CODE_FORMATTER (not confident \u2014 no tier opinion)",
+         "a coder is preferred",
+         "~569 prompt tokens \u2014 lanes whose slot cannot hold them are not asked"
+        ]
+       },
+       "bar": null,
+       "budget_degrade": null,
+       "cache": {
+        "losers_reclaimed": 1,
+        "partials_reclaimed": 0,
+        "status": "miss"
+       },
+       "consensus": {
+        "agree": 2,
+        "coherence": 0.248,
+        "detail": "2 of 2 models broadly agreed",
+        "label": "partial agreement",
+        "level": "mixed",
+        "raced": 2,
+        "tone": "amber",
+        "verified": null
+       },
+       "consensus_escalation": null,
+       "cost": {
+        "actual_usd": 0,
+        "baseline": {
+         "label": "Nemotron 3.5 Super VL 120B A12B",
+         "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+         "source": "mode-default-frontier"
+        },
+        "naive_usd": 0,
+        "race_overhead_usd": 0,
+        "verifier_usd": 0
+       },
+       "created_at": 1793014043972,
+       "cross_check": {
+        "app": "verdict",
+        "blocking": false,
+        "checks": [],
+        "recommended_action": "allow",
+        "reflex_ms": 0.2,
+        "risk_level": "low",
+        "skip_reason": "tier_a_chat",
+        "status": "skipped",
+        "verifier": "none",
+        "verifier_model": null,
+        "verifier_ms": 0,
+        "verifier_ran": false,
+        "verifier_verdict": null
+       },
+       "debate": {
+        "budget_ms": 2000,
+        "ran": false,
+        "reason": "post_budget_exhausted",
+        "winner": null
+       },
+       "decision_id": "req_473pid40",
+       "deliberation": null,
+       "egress": {
+        "coverage": "pattern_floor",
+        "destination": "nvidia",
+        "never_eligible": [],
+        "sent": {
+         "context_sources": [
+          "messages",
+          "hmem:3 records"
+         ],
+         "prompt_chars": 1845,
+         "redacted": []
+        },
+        "withheld": []
+       },
+       "eligible": null,
+       "error": "",
+       "fusion": null,
+       "gen_verifier": {
+        "abstained": 2,
+        "batches": 1,
+        "batches_timed_out": 0,
+        "best": null,
+        "best_index": null,
+        "best_score": null,
+        "judge_local": false,
+        "judge_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+        "judge_was_racer": false,
+        "ms": 5418,
+        "parse_ok": false,
+        "ran": true,
+        "ranked": [
+         {
+          "judge_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "model": "nvidia/nemotron-3-ultra-550b-a55b",
+          "reason": "",
+          "score": null
+         },
+         {
+          "judge_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "reason": "",
+          "score": null
+         }
+        ],
+        "reason": "unparseable",
+        "scale": 100,
+        "scored_of": 2,
+        "shortlist_of": 2,
+        "tokensIn": 2040,
+        "tokensOut": 440
+       },
+       "graded_weight": null,
+       "hmem": {
+        "ids": [
+         "mem_mvkpoe14_20i5",
+         "mem_mvkq5rl5_b82x",
+         "mem_mvkpz3dj_4lx8"
+        ],
+        "injected": 3,
+        "reason": "retrieved 3 memories",
+        "strategy": "comprehensive",
+        "top_score": 0.763
+       },
+       "host_pressure": {
+        "battery": null,
+        "pressure": {
+         "battery": {
+          "hard": 0.5,
+          "label": "nominal",
+          "score": 0.18,
+          "sensor": "battery%, charging",
+          "soft": 0.3
+         },
+         "cpu": {
+          "hard": 0.9,
+          "label": "nominal",
+          "score": 0.34,
+          "sensor": "30s load avg",
+          "soft": 0.7
+         },
+         "gpu": {
+          "hard": 0.92,
+          "label": "nominal",
+          "score": 0.38,
+          "sensor": "GPU + VRAM",
+          "soft": 0.75
+         },
+         "memory": {
+          "hard": 0.85,
+          "label": "warm",
+          "score": 0.51,
+          "sensor": "committed/swap",
+          "soft": 0.7
+         },
+         "network": {
+          "hard": 0.85,
+          "label": "nominal",
+          "score": 0.12,
+          "sensor": "RTT to providers",
+          "soft": 0.5
+         },
+         "quota": {
+          "hard": 0.95,
+          "label": "nominal",
+          "score": 0.28,
+          "sensor": "per-key window",
+          "soft": 0.8
+         },
+         "thermal": {
+          "hard": 0.8,
+          "label": "nominal",
+          "score": 0.22,
+          "sensor": "thermal API",
+          "soft": 0.55
+         }
+        },
+        "thermal": "nominal"
+       },
+       "job": null,
+       "mcp": null,
+       "method": null,
+       "mode": "auto",
+       "optimistic": null,
+       "phases": [
+        {
+         "coherence": 0.24793388429752067,
+         "model": "nvidia/nemotron-3-ultra-550b-a55b",
+         "ms": 45003,
+         "outputTps": 28.375886052040975,
+         "phase": "tool_call_format",
+         "reflex_decided_in_ms": 0.03,
+         "tier": "A",
+         "tokensIn": 2231,
+         "tokensOut": 1277
+        }
+       ],
+       "privacy": {
+        "path": "cloud-ok",
+        "redaction": {
+         "applied": false,
+         "spans": 0
+        }
+       },
+       "prompt_preview": "LOCKS:\n[{\"finding_id\":\"LK-001\",\"claim\":\"The cafe's closing time is 22:00, not 23:00.\",\"quote\":\"The cafe closes at 22:00 sharp, every day.\",\"document_id\":\"locks-v3\",\"locator\":\"secti",
+       "quality_race": null,
+       "reasoning_scaffold": null,
+       "receipt_id": "rcpt_req_473pid40",
+       "refine": null,
+       "request_id": "chatcmpl-f73dd9c6-04eb-4514-b7dd-ecc9f16e353e",
+       "requested_mode": "meterless/auto",
+       "routing": {
+        "confidence": 0.005,
+        "escalated": null,
+        "escalated_on_divergence": false,
+        "hedge": null,
+        "hedges_skipped": 0,
+        "of": 6,
+        "policy": "learned-router",
+        "predicted": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+        "reason": "uncertain-explore",
+        "width": 6,
+        "winner": "nvidia/nemotron-3-ultra-550b-a55b"
+       },
+       "savings": {
+        "amount": 0,
+        "baseline_source": "mode-default-frontier",
+        "currency": "USD",
+        "vs": "Nemotron 3.5 Super VL 120B A12B"
+       },
+       "schema": "meterless.compute_receipt.v1",
+       "score": null,
+       "scorecard": null,
+       "status": "ok",
+       "summary": "ok \u00b7 Nemotron 3 Ultra 550B A55B \u00b7 miss \u00b7 $0.0000 saved",
+       "synthesis": {
+        "aggregator_model": "nvidia/nemotron-3-super-120b-a12b",
+        "error": "nvidia_404: {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function 'ac74040f-9fc9-4c5e-ac74-279ba5161d69': Not found for account 'TrnKQT3pnNltiRMQVV3mnujgeK7_AKCsloJU2A9saM8'\"}",
+        "ran": false
+       },
+       "test_time_compute": null,
+       "tool_degraded": null,
+       "unmet": null,
+       "usage": {
+        "input_tokens": 2231,
+        "latency_ms": 45003,
+        "output_tokens": 1277,
+        "output_tps": 28.375886052040975,
+        "total_tokens": 3508
+       },
+       "verdict": null,
+       "verification": null,
+       "winning_route": {
+        "kind": "cloud",
+        "label": "Nemotron 3 Ultra 550B A55B",
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "provider": "nvidia",
+        "tier": "C"
+       }
+      },
+      "signer": "meterlessd",
+      "ts_ms": 1793014043976
+     },
+     "pubkey_b64": "2bffBBKtzQqQ8LGwBKghOcNiP9aVCl+ePnUO9QU/9Z8=",
+     "sig_b64": "zBNDJWl47xRwBUGAcrCFynJXWTnuz0mKd5RNeGmhTu7MFUOTRsr71WK6MXgTAzqojtv7M8c8ZMh6FUNox6d+Ag=="
+    },
+    "mcp": null,
+    "job": {
+     "id": "job_mvjpzjub01",
+     "kind": "app_stream",
+     "lane": "auto",
+     "turn": 286,
+     "cluster": 1
+    },
+    "egress": {
+     "destination": "nvidia",
+     "coverage": "pattern_floor",
+     "sent": {
+      "prompt_chars": 1845,
+      "context_sources": [
+       "messages",
+       "hmem:3 records"
+      ],
+      "redacted": []
+     },
+     "withheld": [],
+     "never_eligible": []
+    },
+    "consensus": {
+     "level": "mixed",
+     "raced": 2,
+     "agreed": null,
+     "coherence": 0.248,
+     "label": "partial agreement",
+     "basis": "lexical"
+    },
+    "lineage": {
+     "families": [
+      "unknown"
+     ],
+     "distinct": 1,
+     "note": "all 2 panelists share the unknown family"
+    },
+    "app": "verdict",
+    "mode": "auto",
+    "scope": "user"
+   },
+   "cross_check": {
+    "status": "skipped",
+    "risk_level": "low",
+    "verifier": "none",
+    "reflex_ms": 0.2,
+    "verifier_ms": 0,
+    "verifier_ran": false,
+    "verifier_model": null,
+    "verifier_verdict": null,
+    "checks": [],
+    "recommended_action": "allow",
+    "blocking": false,
+    "app": "verdict",
+    "skip_reason": "tier_a_chat"
+   }
+  },
+  {
+   "step": "challenger",
+   "source": "model",
+   "requested_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+   "routed_model": "nvidia/nemotron-3-ultra-550b-a55b",
+   "usage": {
+    "prompt_tokens": 2392,
+    "completion_tokens": 1528,
+    "total_tokens": 3920
+   },
+   "meterless": {
+    "schema": "meterless.compute_receipt.v1",
+    "receipt_id": "rcpt_req_1eagkgqm",
+    "decision_id": "req_1eagkgqm",
+    "requested_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+    "provider_model": "meterless/auto",
+    "routed_model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "winning_route": {
+     "model": "nvidia/nemotron-3-ultra-550b-a55b",
+     "label": "Nemotron 3 Ultra 550B A55B",
+     "provider": "nvidia",
+     "kind": "cloud",
+     "tier": "C"
+    },
+    "requires_review": false,
+    "phases": [
+     {
+      "phase": "planning",
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "ms": 45006,
+      "tokensIn": 2392,
+      "tokensOut": 1528,
+      "outputTps": 33.95102875172199,
+      "coherence": null,
+      "tier": "C",
+      "reflex_decided_in_ms": 0.03
+     }
+    ],
+    "usage": {
+     "input_tokens": 2392,
+     "output_tokens": 1528,
+     "total_tokens": 3920,
+     "output_tps": 33.95102875172199,
+     "latency_ms": 45006
+    },
+    "cost": {
+     "actual_usd": 0,
+     "naive_usd": 0,
+     "baseline": {
+      "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+      "label": "Nemotron 3.5 Super VL 120B A12B",
+      "source": "mode-default-frontier"
+     },
+     "verifier_usd": 0,
+     "race_overhead_usd": 0
+    },
+    "savings": {
+     "amount": 0,
+     "currency": "USD",
+     "vs": "Nemotron 3.5 Super VL 120B A12B",
+     "baseline_source": "mode-default-frontier"
+    },
+    "cache": {
+     "status": "miss",
+     "losers_reclaimed": 0,
+     "partials_reclaimed": 0
+    },
+    "privacy": {
+     "path": "cloud-ok",
+     "redaction": {
+      "applied": false,
+      "spans": 0
+     }
+    },
+    "from_cache": false,
+    "losers_reclaimed": 0,
+    "receipt": {
+     "app": "verdict",
+     "app_policy": {
+      "app": "verdict",
+      "cross_check": "auto",
+      "has_rule": true,
+      "lanes": null,
+      "mode_coerced": false,
+      "premium_budget": null,
+      "privacy": "cloud-ok",
+      "race_width": 6,
+      "requested_mode": "auto",
+      "routed_mode": "auto"
+     },
+     "autopilot": {
+      "ctx_dropped": [],
+      "ctx_unfilterable": false,
+      "envelope": {
+       "allocatable_mb": 0,
+       "pressure": "unknown",
+       "remaining_mb": 0,
+       "used_mb": 0
+      },
+      "needs": {
+       "coding": false,
+       "tools": false,
+       "vision": false
+      },
+      "prompt_tokens": 670,
+      "scout": {
+       "candidates": [
+        {
+         "id": "USAGE_ANALYZER",
+         "score": 8
+        },
+        {
+         "id": "CODE_FORMATTER",
+         "score": 6
+        },
+        {
+         "id": "WRITER",
+         "score": 5
+        }
+       ],
+       "category": "Platform",
+       "confident": false,
+       "mode": "USAGE_ANALYZER",
+       "ms": 1.31,
+       "score": 8,
+       "source": "detected",
+       "tier": "A"
+      },
+      "tier_hint": null,
+      "why": [
+       "scout read USAGE_ANALYZER (not confident \u2014 no tier opinion)",
+       "~670 prompt tokens \u2014 lanes whose slot cannot hold them are not asked"
+      ]
+     },
+     "bar": null,
+     "budget_degrade": null,
+     "cache": {
+      "losers_reclaimed": 0,
+      "partials_reclaimed": 0,
+      "status": "miss"
+     },
+     "consensus": {
+      "agree": 1,
+      "coherence": null,
+      "detail": "answered by a top-tier model",
+      "label": "frontier answer",
+      "level": "solo",
+      "raced": 1,
+      "tone": "blue",
+      "verified": null
+     },
+     "consensus_escalation": null,
+     "cost": {
+      "actual_usd": 0,
+      "baseline": {
+       "label": "Nemotron 3.5 Super VL 120B A12B",
+       "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+       "source": "mode-default-frontier"
+      },
+      "naive_usd": 0,
+      "race_overhead_usd": 0,
+      "verifier_usd": 0
+     },
+     "created_at": 1793014089502,
+     "cross_check": {
+      "app": "verdict",
+      "blocking": false,
+      "checks": [
+       {
+        "message": "No destructive ops detected.",
+        "status": "passed",
+        "type": "destructive_action"
+       },
+       {
+        "message": "No PII/credential detected in response.",
+        "status": "passed",
+        "type": "pii_guard"
+       },
+       {
+        "message": "Tool call matches declared schema.",
+        "status": "passed",
+        "type": "schema_validity"
+       },
+       {
+        "message": "Factual claim requested but response lacks citation markers.",
+        "status": "warning",
+        "type": "citation_consistency"
+       }
+      ],
+      "destructive": false,
+      "raw_risk": "medium",
+      "recommended_action": "show_warning",
+      "reflex_ms": 0.62,
+      "requires_review": false,
+      "risk_level": "medium",
+      "status": "warning",
+      "verifier": "deterministic/schema+regex",
+      "verifier_error": null,
+      "verifier_model": null,
+      "verifier_ms": 0,
+      "verifier_ran": false,
+      "verifier_tokens": null,
+      "verifier_verdict": null
+     },
+     "debate": null,
+     "decision_id": "req_1eagkgqm",
+     "deliberation": null,
+     "egress": {
+      "coverage": "pattern_floor",
+      "destination": "nvidia",
+      "never_eligible": [],
+      "sent": {
+       "context_sources": [
+        "messages",
+        "hmem:3 records"
+       ],
+       "prompt_chars": 2204,
+       "redacted": []
+      },
+      "withheld": []
+     },
+     "eligible": null,
+     "error": "",
+     "fusion": null,
+     "gen_verifier": null,
+     "graded_weight": null,
+     "hmem": {
+      "ids": [
+       "mem_mvkqb3sl_qko7",
+       "mem_mvkpz3dj_4lx8",
+       "mem_mvkpoe14_20i5"
+      ],
+      "injected": 3,
+      "reason": "retrieved 3 memories",
+      "strategy": "comprehensive",
+      "top_score": 0.766
+     },
+     "host_pressure": {
+      "battery": null,
+      "pressure": {
+       "battery": {
+        "hard": 0.5,
+        "label": "nominal",
+        "score": 0.18,
+        "sensor": "battery%, charging",
+        "soft": 0.3
+       },
+       "cpu": {
+        "hard": 0.9,
+        "label": "nominal",
+        "score": 0.34,
+        "sensor": "30s load avg",
+        "soft": 0.7
+       },
+       "gpu": {
+        "hard": 0.92,
+        "label": "nominal",
+        "score": 0.38,
+        "sensor": "GPU + VRAM",
+        "soft": 0.75
+       },
+       "memory": {
+        "hard": 0.85,
+        "label": "warm",
+        "score": 0.51,
+        "sensor": "committed/swap",
+        "soft": 0.7
+       },
+       "network": {
+        "hard": 0.85,
+        "label": "nominal",
+        "score": 0.12,
+        "sensor": "RTT to providers",
+        "soft": 0.5
+       },
+       "quota": {
+        "hard": 0.95,
+        "label": "nominal",
+        "score": 0.28,
+        "sensor": "per-key window",
+        "soft": 0.8
+       },
+       "thermal": {
+        "hard": 0.8,
+        "label": "nominal",
+        "score": 0.22,
+        "sensor": "thermal API",
+        "soft": 0.55
+       }
+      },
+      "thermal": "nominal"
+     },
+     "job": null,
+     "mcp": null,
+     "method": null,
+     "mode": "auto",
+     "optimistic": null,
+     "phases": [
+      {
+       "coherence": null,
+       "model": "nvidia/nemotron-3-ultra-550b-a55b",
+       "ms": 45006,
+       "outputTps": 33.95102875172199,
+       "phase": "planning",
+       "reflex_decided_in_ms": 0.03,
+       "tier": "C",
+       "tokensIn": 2392,
+       "tokensOut": 1528
+      }
+     ],
+     "privacy": {
+      "path": "cloud-ok",
+      "redaction": {
+       "applied": false,
+       "spans": 0
+      }
+     },
+     "prompt_preview": "INVESTIGATOR PROPOSAL:\n{\"proposals\":[{\"lock_id\":\"LK-001\",\"proposed_verdict\":\"BLOCK\",\"evidence_finding_ids\":[\"DR-002\",\"RV-001\"],\"quotes\":[\"The last customer left at 23:15, and Meera",
+     "quality_race": {
+      "active": true,
+      "reason": "difficulty",
+      "vote": null
+     },
+     "reasoning_scaffold": {
+      "active": false,
+      "intent": "research",
+      "phase": "planning",
+      "reason": "phase_not_scaffoldable"
+     },
+     "receipt_id": "rcpt_req_1eagkgqm",
+     "refine": null,
+     "request_id": "chatcmpl-b9fcad12-7b7c-401d-9745-74b1e0440b00",
+     "requested_mode": "meterless/auto",
+     "routing": {
+      "confidence": 0.089,
+      "escalated": null,
+      "escalated_on_divergence": false,
+      "hedge": null,
+      "hedges_skipped": 0,
+      "of": 6,
+      "policy": "learned-router",
+      "predicted": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+      "reason": "uncertain-explore",
+      "width": 6,
+      "winner": "nvidia/nemotron-3-ultra-550b-a55b"
+     },
+     "savings": {
+      "amount": 0,
+      "baseline_source": "mode-default-frontier",
+      "currency": "USD",
+      "vs": "Nemotron 3.5 Super VL 120B A12B"
+     },
+     "schema": "meterless.compute_receipt.v1",
+     "score": null,
+     "scorecard": null,
+     "status": "ok",
+     "summary": "ok \u00b7 Nemotron 3 Ultra 550B A55B \u00b7 miss \u00b7 $0.0000 saved",
+     "synthesis": null,
+     "test_time_compute": null,
+     "tool_degraded": null,
+     "unmet": null,
+     "usage": {
+      "input_tokens": 2392,
+      "latency_ms": 45006,
+      "output_tokens": 1528,
+      "output_tps": 33.95102875172199,
+      "total_tokens": 3920
+     },
+     "verdict": null,
+     "verification": null,
+     "winning_route": {
+      "kind": "cloud",
+      "label": "Nemotron 3 Ultra 550B A55B",
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "provider": "nvidia",
+      "tier": "C"
+     }
+    },
+    "receipt_envelope": {
+     "body": {
+      "llama_cpp_ref": "08659901c43b51de735740f1cf61bb82fbe0c4e4",
+      "manifest_hash": "",
+      "receipt": {
+       "app": "verdict",
+       "app_policy": {
+        "app": "verdict",
+        "cross_check": "auto",
+        "has_rule": true,
+        "lanes": null,
+        "mode_coerced": false,
+        "premium_budget": null,
+        "privacy": "cloud-ok",
+        "race_width": 6,
+        "requested_mode": "auto",
+        "routed_mode": "auto"
+       },
+       "autopilot": {
+        "ctx_dropped": [],
+        "ctx_unfilterable": false,
+        "envelope": {
+         "allocatable_mb": 0,
+         "pressure": "unknown",
+         "remaining_mb": 0,
+         "used_mb": 0
+        },
+        "needs": {
+         "coding": false,
+         "tools": false,
+         "vision": false
+        },
+        "prompt_tokens": 670,
+        "scout": {
+         "candidates": [
+          {
+           "id": "USAGE_ANALYZER",
+           "score": 8
+          },
+          {
+           "id": "CODE_FORMATTER",
+           "score": 6
+          },
+          {
+           "id": "WRITER",
+           "score": 5
+          }
+         ],
+         "category": "Platform",
+         "confident": false,
+         "mode": "USAGE_ANALYZER",
+         "ms": 1.31,
+         "score": 8,
+         "source": "detected",
+         "tier": "A"
+        },
+        "tier_hint": null,
+        "why": [
+         "scout read USAGE_ANALYZER (not confident \u2014 no tier opinion)",
+         "~670 prompt tokens \u2014 lanes whose slot cannot hold them are not asked"
+        ]
+       },
+       "bar": null,
+       "budget_degrade": null,
+       "cache": {
+        "losers_reclaimed": 0,
+        "partials_reclaimed": 0,
+        "status": "miss"
+       },
+       "consensus": {
+        "agree": 1,
+        "coherence": null,
+        "detail": "answered by a top-tier model",
+        "label": "frontier answer",
+        "level": "solo",
+        "raced": 1,
+        "tone": "blue",
+        "verified": null
+       },
+       "consensus_escalation": null,
+       "cost": {
+        "actual_usd": 0,
+        "baseline": {
+         "label": "Nemotron 3.5 Super VL 120B A12B",
+         "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+         "source": "mode-default-frontier"
+        },
+        "naive_usd": 0,
+        "race_overhead_usd": 0,
+        "verifier_usd": 0
+       },
+       "created_at": 1793014089502,
+       "cross_check": {
+        "app": "verdict",
+        "blocking": false,
+        "checks": [
+         {
+          "message": "No destructive ops detected.",
+          "status": "passed",
+          "type": "destructive_action"
+         },
+         {
+          "message": "No PII/credential detected in response.",
+          "status": "passed",
+          "type": "pii_guard"
+         },
+         {
+          "message": "Tool call matches declared schema.",
+          "status": "passed",
+          "type": "schema_validity"
+         },
+         {
+          "message": "Factual claim requested but response lacks citation markers.",
+          "status": "warning",
+          "type": "citation_consistency"
+         }
+        ],
+        "destructive": false,
+        "raw_risk": "medium",
+        "recommended_action": "show_warning",
+        "reflex_ms": 0.62,
+        "requires_review": false,
+        "risk_level": "medium",
+        "status": "warning",
+        "verifier": "deterministic/schema+regex",
+        "verifier_error": null,
+        "verifier_model": null,
+        "verifier_ms": 0,
+        "verifier_ran": false,
+        "verifier_tokens": null,
+        "verifier_verdict": null
+       },
+       "debate": null,
+       "decision_id": "req_1eagkgqm",
+       "deliberation": null,
+       "egress": {
+        "coverage": "pattern_floor",
+        "destination": "nvidia",
+        "never_eligible": [],
+        "sent": {
+         "context_sources": [
+          "messages",
+          "hmem:3 records"
+         ],
+         "prompt_chars": 2204,
+         "redacted": []
+        },
+        "withheld": []
+       },
+       "eligible": null,
+       "error": "",
+       "fusion": null,
+       "gen_verifier": null,
+       "graded_weight": null,
+       "hmem": {
+        "ids": [
+         "mem_mvkqb3sl_qko7",
+         "mem_mvkpz3dj_4lx8",
+         "mem_mvkpoe14_20i5"
+        ],
+        "injected": 3,
+        "reason": "retrieved 3 memories",
+        "strategy": "comprehensive",
+        "top_score": 0.766
+       },
+       "host_pressure": {
+        "battery": null,
+        "pressure": {
+         "battery": {
+          "hard": 0.5,
+          "label": "nominal",
+          "score": 0.18,
+          "sensor": "battery%, charging",
+          "soft": 0.3
+         },
+         "cpu": {
+          "hard": 0.9,
+          "label": "nominal",
+          "score": 0.34,
+          "sensor": "30s load avg",
+          "soft": 0.7
+         },
+         "gpu": {
+          "hard": 0.92,
+          "label": "nominal",
+          "score": 0.38,
+          "sensor": "GPU + VRAM",
+          "soft": 0.75
+         },
+         "memory": {
+          "hard": 0.85,
+          "label": "warm",
+          "score": 0.51,
+          "sensor": "committed/swap",
+          "soft": 0.7
+         },
+         "network": {
+          "hard": 0.85,
+          "label": "nominal",
+          "score": 0.12,
+          "sensor": "RTT to providers",
+          "soft": 0.5
+         },
+         "quota": {
+          "hard": 0.95,
+          "label": "nominal",
+          "score": 0.28,
+          "sensor": "per-key window",
+          "soft": 0.8
+         },
+         "thermal": {
+          "hard": 0.8,
+          "label": "nominal",
+          "score": 0.22,
+          "sensor": "thermal API",
+          "soft": 0.55
+         }
+        },
+        "thermal": "nominal"
+       },
+       "job": null,
+       "mcp": null,
+       "method": null,
+       "mode": "auto",
+       "optimistic": null,
+       "phases": [
+        {
+         "coherence": null,
+         "model": "nvidia/nemotron-3-ultra-550b-a55b",
+         "ms": 45006,
+         "outputTps": 33.95102875172199,
+         "phase": "planning",
+         "reflex_decided_in_ms": 0.03,
+         "tier": "C",
+         "tokensIn": 2392,
+         "tokensOut": 1528
+        }
+       ],
+       "privacy": {
+        "path": "cloud-ok",
+        "redaction": {
+         "applied": false,
+         "spans": 0
+        }
+       },
+       "prompt_preview": "INVESTIGATOR PROPOSAL:\n{\"proposals\":[{\"lock_id\":\"LK-001\",\"proposed_verdict\":\"BLOCK\",\"evidence_finding_ids\":[\"DR-002\",\"RV-001\"],\"quotes\":[\"The last customer left at 23:15, and Meera",
+       "quality_race": {
+        "active": true,
+        "reason": "difficulty",
+        "vote": null
+       },
+       "reasoning_scaffold": {
+        "active": false,
+        "intent": "research",
+        "phase": "planning",
+        "reason": "phase_not_scaffoldable"
+       },
+       "receipt_id": "rcpt_req_1eagkgqm",
+       "refine": null,
+       "request_id": "chatcmpl-b9fcad12-7b7c-401d-9745-74b1e0440b00",
+       "requested_mode": "meterless/auto",
+       "routing": {
+        "confidence": 0.089,
+        "escalated": null,
+        "escalated_on_divergence": false,
+        "hedge": null,
+        "hedges_skipped": 0,
+        "of": 6,
+        "policy": "learned-router",
+        "predicted": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+        "reason": "uncertain-explore",
+        "width": 6,
+        "winner": "nvidia/nemotron-3-ultra-550b-a55b"
+       },
+       "savings": {
+        "amount": 0,
+        "baseline_source": "mode-default-frontier",
+        "currency": "USD",
+        "vs": "Nemotron 3.5 Super VL 120B A12B"
+       },
+       "schema": "meterless.compute_receipt.v1",
+       "score": null,
+       "scorecard": null,
+       "status": "ok",
+       "summary": "ok \u00b7 Nemotron 3 Ultra 550B A55B \u00b7 miss \u00b7 $0.0000 saved",
+       "synthesis": null,
+       "test_time_compute": null,
+       "tool_degraded": null,
+       "unmet": null,
+       "usage": {
+        "input_tokens": 2392,
+        "latency_ms": 45006,
+        "output_tokens": 1528,
+        "output_tps": 33.95102875172199,
+        "total_tokens": 3920
+       },
+       "verdict": null,
+       "verification": null,
+       "winning_route": {
+        "kind": "cloud",
+        "label": "Nemotron 3 Ultra 550B A55B",
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "provider": "nvidia",
+        "tier": "C"
+       }
+      },
+      "signer": "meterlessd",
+      "ts_ms": 1793014089505
+     },
+     "pubkey_b64": "2bffBBKtzQqQ8LGwBKghOcNiP9aVCl+ePnUO9QU/9Z8=",
+     "sig_b64": "yBbXRsyj0oZdGRbqQIaqsldxdDWzgB7Bk49NLR6VrH0LPnj5lBYPYLVQTKJ4erXUQBKVeP/THQNi+PLbemn6BA=="
+    },
+    "mcp": null,
+    "job": {
+     "id": "job_mvjpzjub01",
+     "kind": "app_stream",
+     "lane": "auto",
+     "turn": 287,
+     "cluster": 1
+    },
+    "egress": {
+     "destination": "nvidia",
+     "coverage": "pattern_floor",
+     "sent": {
+      "prompt_chars": 2204,
+      "context_sources": [
+       "messages",
+       "hmem:3 records"
+      ],
+      "redacted": []
+     },
+     "withheld": [],
+     "never_eligible": []
+    },
+    "consensus": {
+     "level": "solo",
+     "raced": 1,
+     "agreed": null,
+     "coherence": null,
+     "label": "frontier answer",
+     "basis": "lexical"
+    },
+    "lineage": {
+     "families": [
+      "unknown"
+     ],
+     "distinct": 1,
+     "note": "1 distinct lineages across 1 panelists"
+    },
+    "app": "verdict",
+    "mode": "auto",
+    "scope": "user"
+   },
+   "cross_check": {
+    "status": "warning",
+    "risk_level": "medium",
+    "raw_risk": "medium",
+    "verifier": "deterministic/schema+regex",
+    "reflex_ms": 0.62,
+    "verifier_ms": 0,
+    "verifier_ran": false,
+    "verifier_model": null,
+    "verifier_verdict": null,
+    "verifier_error": null,
+    "verifier_tokens": null,
+    "checks": [
+     {
+      "type": "destructive_action",
+      "status": "passed",
+      "message": "No destructive ops detected."
+     },
+     {
+      "type": "pii_guard",
+      "status": "passed",
+      "message": "No PII/credential detected in response."
+     },
+     {
+      "type": "schema_validity",
+      "status": "passed",
+      "message": "Tool call matches declared schema."
+     },
+     {
+      "type": "citation_consistency",
+      "status": "warning",
+      "message": "Factual claim requested but response lacks citation markers."
+     }
+    ],
+    "recommended_action": "show_warning",
+    "blocking": false,
+    "app": "verdict",
+    "destructive": false,
+    "requires_review": false
+   }
+  },
+  {
+   "step": "explain_LK-001",
+   "requested_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+   "routed_model": "nvidia/nemotron-3-ultra-550b-a55b",
+   "usage": {
+    "prompt_tokens": 1334,
+    "completion_tokens": 386,
+    "total_tokens": 1720
+   },
+   "meterless": {
+    "schema": "meterless.compute_receipt.v1",
+    "receipt_id": "rcpt_req_3bvlk1uu",
+    "decision_id": "req_3bvlk1uu",
+    "requested_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+    "provider_model": "meterless/auto",
+    "routed_model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "winning_route": {
+     "model": "nvidia/nemotron-3-ultra-550b-a55b",
+     "label": "Nemotron 3 Ultra 550B A55B",
+     "provider": "nvidia",
+     "kind": "cloud",
+     "tier": "C"
+    },
+    "requires_review": false,
+    "phases": [
+     {
+      "phase": "planning",
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "ms": 14356,
+      "tokensIn": 1334,
+      "tokensOut": 386,
+      "outputTps": 26.887712454722763,
+      "coherence": 0.16091954022988506,
+      "tier": "C",
+      "reflex_decided_in_ms": 0.05
+     }
+    ],
+    "usage": {
+     "input_tokens": 1334,
+     "output_tokens": 386,
+     "total_tokens": 1720,
+     "output_tps": 26.887712454722763,
+     "latency_ms": 14356
+    },
+    "cost": {
+     "actual_usd": 0,
+     "naive_usd": 0,
+     "baseline": {
+      "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+      "label": "Nemotron 3.5 Super VL 120B A12B",
+      "source": "mode-default-frontier"
+     },
+     "verifier_usd": 0,
+     "race_overhead_usd": 0
+    },
+    "savings": {
+     "amount": 0,
+     "currency": "USD",
+     "vs": "Nemotron 3.5 Super VL 120B A12B",
+     "baseline_source": "mode-default-frontier"
+    },
+    "cache": {
+     "status": "miss",
+     "losers_reclaimed": 1,
+     "partials_reclaimed": 0
+    },
+    "privacy": {
+     "path": "cloud-ok",
+     "redaction": {
+      "applied": false,
+      "spans": 0
+     }
+    },
+    "from_cache": false,
+    "losers_reclaimed": 1,
+    "receipt": {
+     "app": "verdict",
+     "app_policy": {
+      "app": "verdict",
+      "cross_check": "auto",
+      "has_rule": true,
+      "lanes": null,
+      "mode_coerced": false,
+      "premium_budget": null,
+      "privacy": "cloud-ok",
+      "race_width": 6,
+      "requested_mode": "auto",
+      "routed_mode": "auto"
+     },
+     "autopilot": {
+      "ctx_dropped": [],
+      "ctx_unfilterable": false,
+      "envelope": {
+       "allocatable_mb": 0,
+       "pressure": "unknown",
+       "remaining_mb": 0,
+       "used_mb": 0
+      },
+      "needs": {
+       "coding": false,
+       "tools": false,
+       "vision": false
+      },
+      "prompt_tokens": 189,
+      "scout": {
+       "candidates": [
+        {
+         "id": "WRITER",
+         "score": 5
+        },
+        {
+         "id": "DEVOPS",
+         "score": 2
+        }
+       ],
+       "category": "Creative",
+       "confident": false,
+       "mode": "WRITER",
+       "ms": 0.45,
+       "score": 5,
+       "source": "detected",
+       "tier": "B"
+      },
+      "tier_hint": null,
+      "why": [
+       "scout read WRITER (not confident \u2014 no tier opinion)",
+       "~189 prompt tokens \u2014 lanes whose slot cannot hold them are not asked"
+      ]
+     },
+     "bar": null,
+     "budget_degrade": null,
+     "cache": {
+      "losers_reclaimed": 1,
+      "partials_reclaimed": 0,
+      "status": "miss"
+     },
+     "consensus": {
+      "agree": 2,
+      "coherence": 0.161,
+      "detail": "2 of 2 models broadly agreed",
+      "label": "partial agreement",
+      "level": "mixed",
+      "raced": 2,
+      "tone": "amber",
+      "verified": null
+     },
+     "consensus_escalation": null,
+     "cost": {
+      "actual_usd": 0,
+      "baseline": {
+       "label": "Nemotron 3.5 Super VL 120B A12B",
+       "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+       "source": "mode-default-frontier"
+      },
+      "naive_usd": 0,
+      "race_overhead_usd": 0,
+      "verifier_usd": 0
+     },
+     "created_at": 1793014132754,
+     "cross_check": {
+      "app": "verdict",
+      "blocking": false,
+      "checks": [
+       {
+        "message": "No destructive ops detected.",
+        "status": "passed",
+        "type": "destructive_action"
+       },
+       {
+        "message": "No PII/credential detected in response.",
+        "status": "passed",
+        "type": "pii_guard"
+       },
+       {
+        "message": "Not a tool call.",
+        "status": "skipped",
+        "type": "schema_validity"
+       },
+       {
+        "message": "Factual claim requested but response lacks citation markers.",
+        "status": "warning",
+        "type": "citation_consistency"
+       }
+      ],
+      "destructive": false,
+      "raw_risk": "medium",
+      "recommended_action": "show_warning",
+      "reflex_ms": 0.34,
+      "requires_review": false,
+      "risk_level": "medium",
+      "status": "warning",
+      "verifier": "deterministic/schema+regex",
+      "verifier_error": null,
+      "verifier_model": null,
+      "verifier_ms": 0,
+      "verifier_ran": false,
+      "verifier_tokens": null,
+      "verifier_verdict": null
+     },
+     "debate": {
+      "budget_ms": 2000,
+      "ran": false,
+      "reason": "post_budget_exhausted",
+      "winner": null
+     },
+     "decision_id": "req_3bvlk1uu",
+     "deliberation": null,
+     "egress": {
+      "coverage": "pattern_floor",
+      "destination": "nvidia",
+      "never_eligible": [],
+      "sent": {
+       "context_sources": [
+        "messages",
+        "hmem:3 records"
+       ],
+       "prompt_chars": 410,
+       "redacted": []
+      },
+      "withheld": []
+     },
+     "eligible": null,
+     "error": "",
+     "fusion": null,
+     "gen_verifier": {
+      "abstained": 2,
+      "batches": 1,
+      "batches_timed_out": 0,
+      "best": null,
+      "best_index": null,
+      "best_score": null,
+      "judge_local": false,
+      "judge_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "judge_was_racer": false,
+      "ms": 28595,
+      "parse_ok": false,
+      "ran": true,
+      "ranked": [
+       {
+        "judge_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "reason": "",
+        "score": null
+       },
+       {
+        "judge_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+        "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+        "reason": "",
+        "score": null
+       }
+      ],
+      "reason": "unparseable",
+      "scale": 100,
+      "scored_of": 2,
+      "shortlist_of": 2,
+      "tokensIn": 795,
+      "tokensOut": 440
+     },
+     "graded_weight": null,
+     "hmem": {
+      "ids": [
+       "mem_mvkpzgog_aela",
+       "mem_mvkqbkab_i9j7",
+       "mem_mvkq7vh2_wuf5"
+      ],
+      "injected": 3,
+      "reason": "retrieved 3 memories",
+      "strategy": "comprehensive",
+      "top_score": 0.909
+     },
+     "host_pressure": {
+      "battery": null,
+      "pressure": {
+       "battery": {
+        "hard": 0.5,
+        "label": "nominal",
+        "score": 0.18,
+        "sensor": "battery%, charging",
+        "soft": 0.3
+       },
+       "cpu": {
+        "hard": 0.9,
+        "label": "nominal",
+        "score": 0.34,
+        "sensor": "30s load avg",
+        "soft": 0.7
+       },
+       "gpu": {
+        "hard": 0.92,
+        "label": "nominal",
+        "score": 0.38,
+        "sensor": "GPU + VRAM",
+        "soft": 0.75
+       },
+       "memory": {
+        "hard": 0.85,
+        "label": "warm",
+        "score": 0.51,
+        "sensor": "committed/swap",
+        "soft": 0.7
+       },
+       "network": {
+        "hard": 0.85,
+        "label": "nominal",
+        "score": 0.12,
+        "sensor": "RTT to providers",
+        "soft": 0.5
+       },
+       "quota": {
+        "hard": 0.95,
+        "label": "nominal",
+        "score": 0.28,
+        "sensor": "per-key window",
+        "soft": 0.8
+       },
+       "thermal": {
+        "hard": 0.8,
+        "label": "nominal",
+        "score": 0.22,
+        "sensor": "thermal API",
+        "soft": 0.55
+       }
+      },
+      "thermal": "nominal"
+     },
+     "job": null,
+     "mcp": null,
+     "method": null,
+     "mode": "auto",
+     "optimistic": null,
+     "phases": [
+      {
+       "coherence": 0.16091954022988506,
+       "model": "nvidia/nemotron-3-ultra-550b-a55b",
+       "ms": 14356,
+       "outputTps": 26.887712454722763,
+       "phase": "planning",
+       "reflex_decided_in_ms": 0.05,
+       "tier": "C",
+       "tokensIn": 1334,
+       "tokensOut": 386
+      }
+     ],
+     "privacy": {
+      "path": "cloud-ok",
+      "redaction": {
+       "applied": false,
+       "spans": 0
+      }
+     },
+     "prompt_preview": "DECISION RECORD:\nLock: The cafe's closing time is 22:00, not 23:00. (source line: \"The cafe closes at 22:00 sharp, every day.\")\nVerdict: BLOCK\nBasis: structured contradiction in th",
+     "quality_race": null,
+     "reasoning_scaffold": null,
+     "receipt_id": "rcpt_req_3bvlk1uu",
+     "refine": null,
+     "request_id": "chatcmpl-f0584509-cb2c-4841-924e-bef86b93a1f1",
+     "requested_mode": "meterless/auto",
+     "routing": {
+      "confidence": 0.212,
+      "escalated": null,
+      "escalated_on_divergence": false,
+      "hedge": null,
+      "hedges_skipped": 0,
+      "of": 6,
+      "policy": "learned-router",
+      "predicted": "nvidia/nemotron-3-ultra-550b-a55b",
+      "reason": "uncertain-explore",
+      "width": 6,
+      "winner": "nvidia/nemotron-3-ultra-550b-a55b"
+     },
+     "savings": {
+      "amount": 0,
+      "baseline_source": "mode-default-frontier",
+      "currency": "USD",
+      "vs": "Nemotron 3.5 Super VL 120B A12B"
+     },
+     "schema": "meterless.compute_receipt.v1",
+     "score": null,
+     "scorecard": null,
+     "status": "ok",
+     "summary": "ok \u00b7 Nemotron 3 Ultra 550B A55B \u00b7 miss \u00b7 $0.0000 saved",
+     "synthesis": {
+      "aggregator_model": "nvidia/nemotron-3-super-120b-a12b",
+      "error": "nvidia_404: {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function 'ac74040f-9fc9-4c5e-ac74-279ba5161d69': Not found for account 'TrnKQT3pnNltiRMQVV3mnujgeK7_AKCsloJU2A9saM8'\"}",
+      "ran": false
+     },
+     "test_time_compute": null,
+     "tool_degraded": null,
+     "unmet": null,
+     "usage": {
+      "input_tokens": 1334,
+      "latency_ms": 14356,
+      "output_tokens": 386,
+      "output_tps": 26.887712454722763,
+      "total_tokens": 1720
+     },
+     "verdict": null,
+     "verification": null,
+     "winning_route": {
+      "kind": "cloud",
+      "label": "Nemotron 3 Ultra 550B A55B",
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "provider": "nvidia",
+      "tier": "C"
+     }
+    },
+    "receipt_envelope": {
+     "body": {
+      "llama_cpp_ref": "08659901c43b51de735740f1cf61bb82fbe0c4e4",
+      "manifest_hash": "",
+      "receipt": {
+       "app": "verdict",
+       "app_policy": {
+        "app": "verdict",
+        "cross_check": "auto",
+        "has_rule": true,
+        "lanes": null,
+        "mode_coerced": false,
+        "premium_budget": null,
+        "privacy": "cloud-ok",
+        "race_width": 6,
+        "requested_mode": "auto",
+        "routed_mode": "auto"
+       },
+       "autopilot": {
+        "ctx_dropped": [],
+        "ctx_unfilterable": false,
+        "envelope": {
+         "allocatable_mb": 0,
+         "pressure": "unknown",
+         "remaining_mb": 0,
+         "used_mb": 0
+        },
+        "needs": {
+         "coding": false,
+         "tools": false,
+         "vision": false
+        },
+        "prompt_tokens": 189,
+        "scout": {
+         "candidates": [
+          {
+           "id": "WRITER",
+           "score": 5
+          },
+          {
+           "id": "DEVOPS",
+           "score": 2
+          }
+         ],
+         "category": "Creative",
+         "confident": false,
+         "mode": "WRITER",
+         "ms": 0.45,
+         "score": 5,
+         "source": "detected",
+         "tier": "B"
+        },
+        "tier_hint": null,
+        "why": [
+         "scout read WRITER (not confident \u2014 no tier opinion)",
+         "~189 prompt tokens \u2014 lanes whose slot cannot hold them are not asked"
+        ]
+       },
+       "bar": null,
+       "budget_degrade": null,
+       "cache": {
+        "losers_reclaimed": 1,
+        "partials_reclaimed": 0,
+        "status": "miss"
+       },
+       "consensus": {
+        "agree": 2,
+        "coherence": 0.161,
+        "detail": "2 of 2 models broadly agreed",
+        "label": "partial agreement",
+        "level": "mixed",
+        "raced": 2,
+        "tone": "amber",
+        "verified": null
+       },
+       "consensus_escalation": null,
+       "cost": {
+        "actual_usd": 0,
+        "baseline": {
+         "label": "Nemotron 3.5 Super VL 120B A12B",
+         "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+         "source": "mode-default-frontier"
+        },
+        "naive_usd": 0,
+        "race_overhead_usd": 0,
+        "verifier_usd": 0
+       },
+       "created_at": 1793014132754,
+       "cross_check": {
+        "app": "verdict",
+        "blocking": false,
+        "checks": [
+         {
+          "message": "No destructive ops detected.",
+          "status": "passed",
+          "type": "destructive_action"
+         },
+         {
+          "message": "No PII/credential detected in response.",
+          "status": "passed",
+          "type": "pii_guard"
+         },
+         {
+          "message": "Not a tool call.",
+          "status": "skipped",
+          "type": "schema_validity"
+         },
+         {
+          "message": "Factual claim requested but response lacks citation markers.",
+          "status": "warning",
+          "type": "citation_consistency"
+         }
+        ],
+        "destructive": false,
+        "raw_risk": "medium",
+        "recommended_action": "show_warning",
+        "reflex_ms": 0.34,
+        "requires_review": false,
+        "risk_level": "medium",
+        "status": "warning",
+        "verifier": "deterministic/schema+regex",
+        "verifier_error": null,
+        "verifier_model": null,
+        "verifier_ms": 0,
+        "verifier_ran": false,
+        "verifier_tokens": null,
+        "verifier_verdict": null
+       },
+       "debate": {
+        "budget_ms": 2000,
+        "ran": false,
+        "reason": "post_budget_exhausted",
+        "winner": null
+       },
+       "decision_id": "req_3bvlk1uu",
+       "deliberation": null,
+       "egress": {
+        "coverage": "pattern_floor",
+        "destination": "nvidia",
+        "never_eligible": [],
+        "sent": {
+         "context_sources": [
+          "messages",
+          "hmem:3 records"
+         ],
+         "prompt_chars": 410,
+         "redacted": []
+        },
+        "withheld": []
+       },
+       "eligible": null,
+       "error": "",
+       "fusion": null,
+       "gen_verifier": {
+        "abstained": 2,
+        "batches": 1,
+        "batches_timed_out": 0,
+        "best": null,
+        "best_index": null,
+        "best_score": null,
+        "judge_local": false,
+        "judge_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+        "judge_was_racer": false,
+        "ms": 28595,
+        "parse_ok": false,
+        "ran": true,
+        "ranked": [
+         {
+          "judge_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "model": "nvidia/nemotron-3-ultra-550b-a55b",
+          "reason": "",
+          "score": null
+         },
+         {
+          "judge_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "reason": "",
+          "score": null
+         }
+        ],
+        "reason": "unparseable",
+        "scale": 100,
+        "scored_of": 2,
+        "shortlist_of": 2,
+        "tokensIn": 795,
+        "tokensOut": 440
+       },
+       "graded_weight": null,
+       "hmem": {
+        "ids": [
+         "mem_mvkpzgog_aela",
+         "mem_mvkqbkab_i9j7",
+         "mem_mvkq7vh2_wuf5"
+        ],
+        "injected": 3,
+        "reason": "retrieved 3 memories",
+        "strategy": "comprehensive",
+        "top_score": 0.909
+       },
+       "host_pressure": {
+        "battery": null,
+        "pressure": {
+         "battery": {
+          "hard": 0.5,
+          "label": "nominal",
+          "score": 0.18,
+          "sensor": "battery%, charging",
+          "soft": 0.3
+         },
+         "cpu": {
+          "hard": 0.9,
+          "label": "nominal",
+          "score": 0.34,
+          "sensor": "30s load avg",
+          "soft": 0.7
+         },
+         "gpu": {
+          "hard": 0.92,
+          "label": "nominal",
+          "score": 0.38,
+          "sensor": "GPU + VRAM",
+          "soft": 0.75
+         },
+         "memory": {
+          "hard": 0.85,
+          "label": "warm",
+          "score": 0.51,
+          "sensor": "committed/swap",
+          "soft": 0.7
+         },
+         "network": {
+          "hard": 0.85,
+          "label": "nominal",
+          "score": 0.12,
+          "sensor": "RTT to providers",
+          "soft": 0.5
+         },
+         "quota": {
+          "hard": 0.95,
+          "label": "nominal",
+          "score": 0.28,
+          "sensor": "per-key window",
+          "soft": 0.8
+         },
+         "thermal": {
+          "hard": 0.8,
+          "label": "nominal",
+          "score": 0.22,
+          "sensor": "thermal API",
+          "soft": 0.55
+         }
+        },
+        "thermal": "nominal"
+       },
+       "job": null,
+       "mcp": null,
+       "method": null,
+       "mode": "auto",
+       "optimistic": null,
+       "phases": [
+        {
+         "coherence": 0.16091954022988506,
+         "model": "nvidia/nemotron-3-ultra-550b-a55b",
+         "ms": 14356,
+         "outputTps": 26.887712454722763,
+         "phase": "planning",
+         "reflex_decided_in_ms": 0.05,
+         "tier": "C",
+         "tokensIn": 1334,
+         "tokensOut": 386
+        }
+       ],
+       "privacy": {
+        "path": "cloud-ok",
+        "redaction": {
+         "applied": false,
+         "spans": 0
+        }
+       },
+       "prompt_preview": "DECISION RECORD:\nLock: The cafe's closing time is 22:00, not 23:00. (source line: \"The cafe closes at 22:00 sharp, every day.\")\nVerdict: BLOCK\nBasis: structured contradiction in th",
+       "quality_race": null,
+       "reasoning_scaffold": null,
+       "receipt_id": "rcpt_req_3bvlk1uu",
+       "refine": null,
+       "request_id": "chatcmpl-f0584509-cb2c-4841-924e-bef86b93a1f1",
+       "requested_mode": "meterless/auto",
+       "routing": {
+        "confidence": 0.212,
+        "escalated": null,
+        "escalated_on_divergence": false,
+        "hedge": null,
+        "hedges_skipped": 0,
+        "of": 6,
+        "policy": "learned-router",
+        "predicted": "nvidia/nemotron-3-ultra-550b-a55b",
+        "reason": "uncertain-explore",
+        "width": 6,
+        "winner": "nvidia/nemotron-3-ultra-550b-a55b"
+       },
+       "savings": {
+        "amount": 0,
+        "baseline_source": "mode-default-frontier",
+        "currency": "USD",
+        "vs": "Nemotron 3.5 Super VL 120B A12B"
+       },
+       "schema": "meterless.compute_receipt.v1",
+       "score": null,
+       "scorecard": null,
+       "status": "ok",
+       "summary": "ok \u00b7 Nemotron 3 Ultra 550B A55B \u00b7 miss \u00b7 $0.0000 saved",
+       "synthesis": {
+        "aggregator_model": "nvidia/nemotron-3-super-120b-a12b",
+        "error": "nvidia_404: {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function 'ac74040f-9fc9-4c5e-ac74-279ba5161d69': Not found for account 'TrnKQT3pnNltiRMQVV3mnujgeK7_AKCsloJU2A9saM8'\"}",
+        "ran": false
+       },
+       "test_time_compute": null,
+       "tool_degraded": null,
+       "unmet": null,
+       "usage": {
+        "input_tokens": 1334,
+        "latency_ms": 14356,
+        "output_tokens": 386,
+        "output_tps": 26.887712454722763,
+        "total_tokens": 1720
+       },
+       "verdict": null,
+       "verification": null,
+       "winning_route": {
+        "kind": "cloud",
+        "label": "Nemotron 3 Ultra 550B A55B",
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "provider": "nvidia",
+        "tier": "C"
+       }
+      },
+      "signer": "meterlessd",
+      "ts_ms": 1793014132758
+     },
+     "pubkey_b64": "2bffBBKtzQqQ8LGwBKghOcNiP9aVCl+ePnUO9QU/9Z8=",
+     "sig_b64": "ApwySS6frblDF310nAO7ayV0LsBIiVImET5phnRCFOAhyqosGoYpNTAWt0ykaXn/iu/uZ+O2bh84jvS9tGK9BA=="
+    },
+    "mcp": null,
+    "job": {
+     "id": "job_mvjpzjub01",
+     "kind": "app_stream",
+     "lane": "auto",
+     "turn": 288,
+     "cluster": 2
+    },
+    "egress": {
+     "destination": "nvidia",
+     "coverage": "pattern_floor",
+     "sent": {
+      "prompt_chars": 410,
+      "context_sources": [
+       "messages",
+       "hmem:3 records"
+      ],
+      "redacted": []
+     },
+     "withheld": [],
+     "never_eligible": []
+    },
+    "consensus": {
+     "level": "mixed",
+     "raced": 2,
+     "agreed": null,
+     "coherence": 0.161,
+     "label": "partial agreement",
+     "basis": "lexical"
+    },
+    "lineage": {
+     "families": [
+      "unknown"
+     ],
+     "distinct": 1,
+     "note": "all 2 panelists share the unknown family"
+    },
+    "app": "verdict",
+    "mode": "auto",
+    "scope": "user"
+   },
+   "cross_check": {
+    "status": "warning",
+    "risk_level": "medium",
+    "raw_risk": "medium",
+    "verifier": "deterministic/schema+regex",
+    "reflex_ms": 0.34,
+    "verifier_ms": 0,
+    "verifier_ran": false,
+    "verifier_model": null,
+    "verifier_verdict": null,
+    "verifier_error": null,
+    "verifier_tokens": null,
+    "checks": [
+     {
+      "type": "destructive_action",
+      "status": "passed",
+      "message": "No destructive ops detected."
+     },
+     {
+      "type": "pii_guard",
+      "status": "passed",
+      "message": "No PII/credential detected in response."
+     },
+     {
+      "type": "schema_validity",
+      "status": "skipped",
+      "message": "Not a tool call."
+     },
+     {
+      "type": "citation_consistency",
+      "status": "warning",
+      "message": "Factual claim requested but response lacks citation markers."
+     }
+    ],
+    "recommended_action": "show_warning",
+    "blocking": false,
+    "app": "verdict",
+    "destructive": false,
+    "requires_review": false
+   }
+  },
+  {
+   "step": "explain_LK-002",
+   "requested_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+   "routed_model": "nvidia/nemotron-3-ultra-550b-a55b",
+   "usage": {
+    "prompt_tokens": 1007,
+    "completion_tokens": 324,
+    "total_tokens": 1331
+   },
+   "meterless": {
+    "schema": "meterless.compute_receipt.v1",
+    "receipt_id": "rcpt_req_p4va01fp",
+    "decision_id": "req_p4va01fp",
+    "requested_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+    "provider_model": "meterless/auto",
+    "routed_model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "winning_route": {
+     "model": "nvidia/nemotron-3-ultra-550b-a55b",
+     "label": "Nemotron 3 Ultra 550B A55B",
+     "provider": "nvidia",
+     "kind": "cloud",
+     "tier": "C"
+    },
+    "requires_review": false,
+    "phases": [
+     {
+      "phase": "planning",
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "ms": 28096,
+      "tokensIn": 1007,
+      "tokensOut": 324,
+      "outputTps": 11.531890660592255,
+      "coherence": 0.16049382716049382,
+      "tier": "C",
+      "reflex_decided_in_ms": 0.05
+     }
+    ],
+    "usage": {
+     "input_tokens": 1007,
+     "output_tokens": 324,
+     "total_tokens": 1331,
+     "output_tps": 11.531890660592255,
+     "latency_ms": 28096
+    },
+    "cost": {
+     "actual_usd": 0,
+     "naive_usd": 0,
+     "baseline": {
+      "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+      "label": "Nemotron 3.5 Super VL 120B A12B",
+      "source": "mode-default-frontier"
+     },
+     "verifier_usd": 0,
+     "race_overhead_usd": 0
+    },
+    "savings": {
+     "amount": 0,
+     "currency": "USD",
+     "vs": "Nemotron 3.5 Super VL 120B A12B",
+     "baseline_source": "mode-default-frontier"
+    },
+    "cache": {
+     "status": "miss",
+     "losers_reclaimed": 1,
+     "partials_reclaimed": 0
+    },
+    "privacy": {
+     "path": "cloud-ok",
+     "redaction": {
+      "applied": false,
+      "spans": 0
+     }
+    },
+    "from_cache": false,
+    "losers_reclaimed": 1,
+    "receipt": {
+     "app": "verdict",
+     "app_policy": {
+      "app": "verdict",
+      "cross_check": "auto",
+      "has_rule": true,
+      "lanes": null,
+      "mode_coerced": false,
+      "premium_budget": null,
+      "privacy": "cloud-ok",
+      "race_width": 6,
+      "requested_mode": "auto",
+      "routed_mode": "auto"
+     },
+     "autopilot": {
+      "ctx_dropped": [],
+      "ctx_unfilterable": false,
+      "envelope": {
+       "allocatable_mb": 0,
+       "pressure": "unknown",
+       "remaining_mb": 0,
+       "used_mb": 0
+      },
+      "needs": {
+       "coding": false,
+       "tools": false,
+       "vision": false
+      },
+      "prompt_tokens": 176,
+      "scout": {
+       "candidates": [
+        {
+         "id": "WRITER",
+         "score": 5
+        },
+        {
+         "id": "DESTRUCTIVE",
+         "score": 4
+        },
+        {
+         "id": "NAMING_ADVISOR",
+         "score": 4
+        }
+       ],
+       "category": "Creative",
+       "confident": false,
+       "mode": "WRITER",
+       "ms": 0.41,
+       "score": 5,
+       "source": "detected",
+       "tier": "B"
+      },
+      "tier_hint": null,
+      "why": [
+       "scout read WRITER (not confident \u2014 no tier opinion)",
+       "~176 prompt tokens \u2014 lanes whose slot cannot hold them are not asked"
+      ]
+     },
+     "bar": null,
+     "budget_degrade": null,
+     "cache": {
+      "losers_reclaimed": 1,
+      "partials_reclaimed": 0,
+      "status": "miss"
+     },
+     "consensus": {
+      "agree": 2,
+      "coherence": 0.16,
+      "detail": "2 of 2 models broadly agreed",
+      "label": "partial agreement",
+      "level": "mixed",
+      "raced": 2,
+      "tone": "amber",
+      "verified": null
+     },
+     "consensus_escalation": null,
+     "cost": {
+      "actual_usd": 0,
+      "baseline": {
+       "label": "Nemotron 3.5 Super VL 120B A12B",
+       "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+       "source": "mode-default-frontier"
+      },
+      "naive_usd": 0,
+      "race_overhead_usd": 0,
+      "verifier_usd": 0
+     },
+     "created_at": 1793014165730,
+     "cross_check": {
+      "app": "verdict",
+      "blocking": false,
+      "checks": [
+       {
+        "message": "No destructive ops detected.",
+        "status": "passed",
+        "type": "destructive_action"
+       },
+       {
+        "message": "No PII/credential detected in response.",
+        "status": "passed",
+        "type": "pii_guard"
+       },
+       {
+        "message": "Not a tool call.",
+        "status": "skipped",
+        "type": "schema_validity"
+       },
+       {
+        "message": "Factual claim requested but response lacks citation markers.",
+        "status": "warning",
+        "type": "citation_consistency"
+       }
+      ],
+      "destructive": false,
+      "raw_risk": "medium",
+      "recommended_action": "show_warning",
+      "reflex_ms": 0.32,
+      "requires_review": false,
+      "risk_level": "medium",
+      "status": "warning",
+      "verifier": "deterministic/schema+regex",
+      "verifier_error": null,
+      "verifier_model": null,
+      "verifier_ms": 0,
+      "verifier_ran": false,
+      "verifier_tokens": null,
+      "verifier_verdict": null
+     },
+     "debate": {
+      "budget_ms": 2000,
+      "ran": false,
+      "reason": "post_budget_exhausted",
+      "winner": null
+     },
+     "decision_id": "req_p4va01fp",
+     "deliberation": null,
+     "egress": {
+      "coverage": "pattern_floor",
+      "destination": "nvidia",
+      "never_eligible": [],
+      "sent": {
+       "context_sources": [
+        "messages",
+        "hmem:3 records"
+       ],
+       "prompt_chars": 357,
+       "redacted": []
+      },
+      "withheld": []
+     },
+     "eligible": null,
+     "error": "",
+     "fusion": null,
+     "gen_verifier": {
+      "abstained": 2,
+      "batches": 1,
+      "batches_timed_out": 0,
+      "best": null,
+      "best_index": null,
+      "best_score": null,
+      "judge_local": false,
+      "judge_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+      "judge_was_racer": false,
+      "ms": 4601,
+      "parse_ok": false,
+      "ran": true,
+      "ranked": [
+       {
+        "judge_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "reason": "",
+        "score": null
+       },
+       {
+        "judge_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+        "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+        "reason": "",
+        "score": null
+       }
+      ],
+      "reason": "unparseable",
+      "scale": 100,
+      "scored_of": 2,
+      "shortlist_of": 2,
+      "tokensIn": 679,
+      "tokensOut": 440
+     },
+     "graded_weight": null,
+     "hmem": {
+      "ids": [
+       "mem_mvkqc0t3_0h99",
+       "mem_mvkq7vh2_wuf5",
+       "mem_mvkqbkab_i9j7"
+      ],
+      "injected": 3,
+      "reason": "retrieved 3 memories",
+      "strategy": "comprehensive",
+      "top_score": 0.663
+     },
+     "host_pressure": {
+      "battery": null,
+      "pressure": {
+       "battery": {
+        "hard": 0.5,
+        "label": "nominal",
+        "score": 0.18,
+        "sensor": "battery%, charging",
+        "soft": 0.3
+       },
+       "cpu": {
+        "hard": 0.9,
+        "label": "nominal",
+        "score": 0.34,
+        "sensor": "30s load avg",
+        "soft": 0.7
+       },
+       "gpu": {
+        "hard": 0.92,
+        "label": "nominal",
+        "score": 0.38,
+        "sensor": "GPU + VRAM",
+        "soft": 0.75
+       },
+       "memory": {
+        "hard": 0.85,
+        "label": "warm",
+        "score": 0.51,
+        "sensor": "committed/swap",
+        "soft": 0.7
+       },
+       "network": {
+        "hard": 0.85,
+        "label": "nominal",
+        "score": 0.12,
+        "sensor": "RTT to providers",
+        "soft": 0.5
+       },
+       "quota": {
+        "hard": 0.95,
+        "label": "nominal",
+        "score": 0.28,
+        "sensor": "per-key window",
+        "soft": 0.8
+       },
+       "thermal": {
+        "hard": 0.8,
+        "label": "nominal",
+        "score": 0.22,
+        "sensor": "thermal API",
+        "soft": 0.55
+       }
+      },
+      "thermal": "nominal"
+     },
+     "job": null,
+     "mcp": null,
+     "method": null,
+     "mode": "auto",
+     "optimistic": null,
+     "phases": [
+      {
+       "coherence": 0.16049382716049382,
+       "model": "nvidia/nemotron-3-ultra-550b-a55b",
+       "ms": 28096,
+       "outputTps": 11.531890660592255,
+       "phase": "planning",
+       "reflex_decided_in_ms": 0.05,
+       "tier": "C",
+       "tokensIn": 1007,
+       "tokensOut": 324
+      }
+     ],
+     "privacy": {
+      "path": "cloud-ok",
+      "redaction": {
+       "applied": false,
+       "spans": 0
+      }
+     },
+     "prompt_preview": "DECISION RECORD:\nLock: The owner's name is Meera. (source line: \"Owner: Meera Sharma.\")\nVerdict: ALLOW\nBasis: second look layer 1 (identity acting subject): name=Meera; verb=wiped;",
+     "quality_race": null,
+     "reasoning_scaffold": null,
+     "receipt_id": "rcpt_req_p4va01fp",
+     "refine": null,
+     "request_id": "chatcmpl-57fef186-5a7f-4aad-a0f4-7901f80fc04c",
+     "requested_mode": "meterless/auto",
+     "routing": {
+      "confidence": 0.253,
+      "escalated": null,
+      "escalated_on_divergence": false,
+      "hedge": null,
+      "hedges_skipped": 0,
+      "of": 6,
+      "policy": "learned-router",
+      "predicted": "nvidia/nemotron-3-ultra-550b-a55b",
+      "reason": "uncertain-explore",
+      "width": 6,
+      "winner": "nvidia/nemotron-3-ultra-550b-a55b"
+     },
+     "savings": {
+      "amount": 0,
+      "baseline_source": "mode-default-frontier",
+      "currency": "USD",
+      "vs": "Nemotron 3.5 Super VL 120B A12B"
+     },
+     "schema": "meterless.compute_receipt.v1",
+     "score": null,
+     "scorecard": null,
+     "status": "ok",
+     "summary": "ok \u00b7 Nemotron 3 Ultra 550B A55B \u00b7 miss \u00b7 $0.0000 saved",
+     "synthesis": {
+      "aggregator_model": "nvidia/nemotron-3-super-120b-a12b",
+      "error": "nvidia_404: {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function 'ac74040f-9fc9-4c5e-ac74-279ba5161d69': Not found for account 'TrnKQT3pnNltiRMQVV3mnujgeK7_AKCsloJU2A9saM8'\"}",
+      "ran": false
+     },
+     "test_time_compute": null,
+     "tool_degraded": null,
+     "unmet": null,
+     "usage": {
+      "input_tokens": 1007,
+      "latency_ms": 28096,
+      "output_tokens": 324,
+      "output_tps": 11.531890660592255,
+      "total_tokens": 1331
+     },
+     "verdict": null,
+     "verification": null,
+     "winning_route": {
+      "kind": "cloud",
+      "label": "Nemotron 3 Ultra 550B A55B",
+      "model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "provider": "nvidia",
+      "tier": "C"
+     }
+    },
+    "receipt_envelope": {
+     "body": {
+      "llama_cpp_ref": "08659901c43b51de735740f1cf61bb82fbe0c4e4",
+      "manifest_hash": "",
+      "receipt": {
+       "app": "verdict",
+       "app_policy": {
+        "app": "verdict",
+        "cross_check": "auto",
+        "has_rule": true,
+        "lanes": null,
+        "mode_coerced": false,
+        "premium_budget": null,
+        "privacy": "cloud-ok",
+        "race_width": 6,
+        "requested_mode": "auto",
+        "routed_mode": "auto"
+       },
+       "autopilot": {
+        "ctx_dropped": [],
+        "ctx_unfilterable": false,
+        "envelope": {
+         "allocatable_mb": 0,
+         "pressure": "unknown",
+         "remaining_mb": 0,
+         "used_mb": 0
+        },
+        "needs": {
+         "coding": false,
+         "tools": false,
+         "vision": false
+        },
+        "prompt_tokens": 176,
+        "scout": {
+         "candidates": [
+          {
+           "id": "WRITER",
+           "score": 5
+          },
+          {
+           "id": "DESTRUCTIVE",
+           "score": 4
+          },
+          {
+           "id": "NAMING_ADVISOR",
+           "score": 4
+          }
+         ],
+         "category": "Creative",
+         "confident": false,
+         "mode": "WRITER",
+         "ms": 0.41,
+         "score": 5,
+         "source": "detected",
+         "tier": "B"
+        },
+        "tier_hint": null,
+        "why": [
+         "scout read WRITER (not confident \u2014 no tier opinion)",
+         "~176 prompt tokens \u2014 lanes whose slot cannot hold them are not asked"
+        ]
+       },
+       "bar": null,
+       "budget_degrade": null,
+       "cache": {
+        "losers_reclaimed": 1,
+        "partials_reclaimed": 0,
+        "status": "miss"
+       },
+       "consensus": {
+        "agree": 2,
+        "coherence": 0.16,
+        "detail": "2 of 2 models broadly agreed",
+        "label": "partial agreement",
+        "level": "mixed",
+        "raced": 2,
+        "tone": "amber",
+        "verified": null
+       },
+       "consensus_escalation": null,
+       "cost": {
+        "actual_usd": 0,
+        "baseline": {
+         "label": "Nemotron 3.5 Super VL 120B A12B",
+         "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+         "source": "mode-default-frontier"
+        },
+        "naive_usd": 0,
+        "race_overhead_usd": 0,
+        "verifier_usd": 0
+       },
+       "created_at": 1793014165730,
+       "cross_check": {
+        "app": "verdict",
+        "blocking": false,
+        "checks": [
+         {
+          "message": "No destructive ops detected.",
+          "status": "passed",
+          "type": "destructive_action"
+         },
+         {
+          "message": "No PII/credential detected in response.",
+          "status": "passed",
+          "type": "pii_guard"
+         },
+         {
+          "message": "Not a tool call.",
+          "status": "skipped",
+          "type": "schema_validity"
+         },
+         {
+          "message": "Factual claim requested but response lacks citation markers.",
+          "status": "warning",
+          "type": "citation_consistency"
+         }
+        ],
+        "destructive": false,
+        "raw_risk": "medium",
+        "recommended_action": "show_warning",
+        "reflex_ms": 0.32,
+        "requires_review": false,
+        "risk_level": "medium",
+        "status": "warning",
+        "verifier": "deterministic/schema+regex",
+        "verifier_error": null,
+        "verifier_model": null,
+        "verifier_ms": 0,
+        "verifier_ran": false,
+        "verifier_tokens": null,
+        "verifier_verdict": null
+       },
+       "debate": {
+        "budget_ms": 2000,
+        "ran": false,
+        "reason": "post_budget_exhausted",
+        "winner": null
+       },
+       "decision_id": "req_p4va01fp",
+       "deliberation": null,
+       "egress": {
+        "coverage": "pattern_floor",
+        "destination": "nvidia",
+        "never_eligible": [],
+        "sent": {
+         "context_sources": [
+          "messages",
+          "hmem:3 records"
+         ],
+         "prompt_chars": 357,
+         "redacted": []
+        },
+        "withheld": []
+       },
+       "eligible": null,
+       "error": "",
+       "fusion": null,
+       "gen_verifier": {
+        "abstained": 2,
+        "batches": 1,
+        "batches_timed_out": 0,
+        "best": null,
+        "best_index": null,
+        "best_score": null,
+        "judge_local": false,
+        "judge_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+        "judge_was_racer": false,
+        "ms": 4601,
+        "parse_ok": false,
+        "ran": true,
+        "ranked": [
+         {
+          "judge_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "model": "nvidia/nemotron-3-ultra-550b-a55b",
+          "reason": "",
+          "score": null
+         },
+         {
+          "judge_model": "nvidia/nemotron-3.5-lightning-30b-a3b",
+          "model": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+          "reason": "",
+          "score": null
+         }
+        ],
+        "reason": "unparseable",
+        "scale": 100,
+        "scored_of": 2,
+        "shortlist_of": 2,
+        "tokensIn": 679,
+        "tokensOut": 440
+       },
+       "graded_weight": null,
+       "hmem": {
+        "ids": [
+         "mem_mvkqc0t3_0h99",
+         "mem_mvkq7vh2_wuf5",
+         "mem_mvkqbkab_i9j7"
+        ],
+        "injected": 3,
+        "reason": "retrieved 3 memories",
+        "strategy": "comprehensive",
+        "top_score": 0.663
+       },
+       "host_pressure": {
+        "battery": null,
+        "pressure": {
+         "battery": {
+          "hard": 0.5,
+          "label": "nominal",
+          "score": 0.18,
+          "sensor": "battery%, charging",
+          "soft": 0.3
+         },
+         "cpu": {
+          "hard": 0.9,
+          "label": "nominal",
+          "score": 0.34,
+          "sensor": "30s load avg",
+          "soft": 0.7
+         },
+         "gpu": {
+          "hard": 0.92,
+          "label": "nominal",
+          "score": 0.38,
+          "sensor": "GPU + VRAM",
+          "soft": 0.75
+         },
+         "memory": {
+          "hard": 0.85,
+          "label": "warm",
+          "score": 0.51,
+          "sensor": "committed/swap",
+          "soft": 0.7
+         },
+         "network": {
+          "hard": 0.85,
+          "label": "nominal",
+          "score": 0.12,
+          "sensor": "RTT to providers",
+          "soft": 0.5
+         },
+         "quota": {
+          "hard": 0.95,
+          "label": "nominal",
+          "score": 0.28,
+          "sensor": "per-key window",
+          "soft": 0.8
+         },
+         "thermal": {
+          "hard": 0.8,
+          "label": "nominal",
+          "score": 0.22,
+          "sensor": "thermal API",
+          "soft": 0.55
+         }
+        },
+        "thermal": "nominal"
+       },
+       "job": null,
+       "mcp": null,
+       "method": null,
+       "mode": "auto",
+       "optimistic": null,
+       "phases": [
+        {
+         "coherence": 0.16049382716049382,
+         "model": "nvidia/nemotron-3-ultra-550b-a55b",
+         "ms": 28096,
+         "outputTps": 11.531890660592255,
+         "phase": "planning",
+         "reflex_decided_in_ms": 0.05,
+         "tier": "C",
+         "tokensIn": 1007,
+         "tokensOut": 324
+        }
+       ],
+       "privacy": {
+        "path": "cloud-ok",
+        "redaction": {
+         "applied": false,
+         "spans": 0
+        }
+       },
+       "prompt_preview": "DECISION RECORD:\nLock: The owner's name is Meera. (source line: \"Owner: Meera Sharma.\")\nVerdict: ALLOW\nBasis: second look layer 1 (identity acting subject): name=Meera; verb=wiped;",
+       "quality_race": null,
+       "reasoning_scaffold": null,
+       "receipt_id": "rcpt_req_p4va01fp",
+       "refine": null,
+       "request_id": "chatcmpl-57fef186-5a7f-4aad-a0f4-7901f80fc04c",
+       "requested_mode": "meterless/auto",
+       "routing": {
+        "confidence": 0.253,
+        "escalated": null,
+        "escalated_on_divergence": false,
+        "hedge": null,
+        "hedges_skipped": 0,
+        "of": 6,
+        "policy": "learned-router",
+        "predicted": "nvidia/nemotron-3-ultra-550b-a55b",
+        "reason": "uncertain-explore",
+        "width": 6,
+        "winner": "nvidia/nemotron-3-ultra-550b-a55b"
+       },
+       "savings": {
+        "amount": 0,
+        "baseline_source": "mode-default-frontier",
+        "currency": "USD",
+        "vs": "Nemotron 3.5 Super VL 120B A12B"
+       },
+       "schema": "meterless.compute_receipt.v1",
+       "score": null,
+       "scorecard": null,
+       "status": "ok",
+       "summary": "ok \u00b7 Nemotron 3 Ultra 550B A55B \u00b7 miss \u00b7 $0.0000 saved",
+       "synthesis": {
+        "aggregator_model": "nvidia/nemotron-3-super-120b-a12b",
+        "error": "nvidia_404: {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function 'ac74040f-9fc9-4c5e-ac74-279ba5161d69': Not found for account 'TrnKQT3pnNltiRMQVV3mnujgeK7_AKCsloJU2A9saM8'\"}",
+        "ran": false
+       },
+       "test_time_compute": null,
+       "tool_degraded": null,
+       "unmet": null,
+       "usage": {
+        "input_tokens": 1007,
+        "latency_ms": 28096,
+        "output_tokens": 324,
+        "output_tps": 11.531890660592255,
+        "total_tokens": 1331
+       },
+       "verdict": null,
+       "verification": null,
+       "winning_route": {
+        "kind": "cloud",
+        "label": "Nemotron 3 Ultra 550B A55B",
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "provider": "nvidia",
+        "tier": "C"
+       }
+      },
+      "signer": "meterlessd",
+      "ts_ms": 1793014165733
+     },
+     "pubkey_b64": "2bffBBKtzQqQ8LGwBKghOcNiP9aVCl+ePnUO9QU/9Z8=",
+     "sig_b64": "gWKVoJNJJqNvDfATeH0hGMmYdQoOyid5irecetSMD4Nkx35BlJwxUnc9nTk4GUtipW7wQCMlegavtNgV8T/7CA=="
+    },
+    "mcp": null,
+    "job": {
+     "id": "job_mvjpzjub01",
+     "kind": "app_stream",
+     "lane": "auto",
+     "turn": 289,
+     "cluster": 2
+    },
+    "egress": {
+     "destination": "nvidia",
+     "coverage": "pattern_floor",
+     "sent": {
+      "prompt_chars": 357,
+      "context_sources": [
+       "messages",
+       "hmem:3 records"
+      ],
+      "redacted": []
+     },
+     "withheld": [],
+     "never_eligible": []
+    },
+    "consensus": {
+     "level": "mixed",
+     "raced": 2,
+     "agreed": null,
+     "coherence": 0.16,
+     "label": "partial agreement",
+     "basis": "lexical"
+    },
+    "lineage": {
+     "families": [
+      "unknown"
+     ],
+     "distinct": 1,
+     "note": "all 2 panelists share the unknown family"
+    },
+    "app": "verdict",
+    "mode": "auto",
+    "scope": "user"
+   },
+   "cross_check": {
+    "status": "warning",
+    "risk_level": "medium",
+    "raw_risk": "medium",
+    "verifier": "deterministic/schema+regex",
+    "reflex_ms": 0.32,
+    "verifier_ms": 0,
+    "verifier_ran": false,
+    "verifier_model": null,
+    "verifier_verdict": null,
+    "verifier_error": null,
+    "verifier_tokens": null,
+    "checks": [
+     {
+      "type": "destructive_action",
+      "status": "passed",
+      "message": "No destructive ops detected."
+     },
+     {
+      "type": "pii_guard",
+      "status": "passed",
+      "message": "No PII/credential detected in response."
+     },
+     {
+      "type": "schema_validity",
+      "status": "skipped",
+      "message": "Not a tool call."
+     },
+     {
+      "type": "citation_consistency",
+      "status": "warning",
+      "message": "Factual claim requested but response lacks citation markers."
+     }
+    ],
+    "recommended_action": "show_warning",
+    "blocking": false,
+    "app": "verdict",
+    "destructive": false,
+    "requires_review": false
+   }
+  }
+ ],
+ "rejected_quotes": [],
+ "reinvestigations": [],
+ "decisions": [
+  {
+   "lock_id": "LK-001",
+   "lock_claim": "The cafe's closing time is 22:00, not 23:00.",
+   "lock_quote": "The cafe closes at 22:00 sharp, every day.",
+   "verdict": "BLOCK",
+   "basis": "structured contradiction in the record: DR-002",
+   "evidence_finding_ids": [
+    "DR-002",
+    "RV-001"
+   ],
+   "quotes": [
+    "The last customer left at 23:15, and Meera locked up.",
+    "Scene 7 reads like midnight, not a 22:00 close."
+   ],
+   "investigator_proposal": "BLOCK",
+   "challenger_stance": "AGREE",
+   "explanation": "The claim that the cafe closes at 22:00 is blocked because the draft states \"The last customer left at 23:15, and Meera locked up.\" A reviewer also noted that Scene 7 reads like midnight, not a 22:00 close.",
+   "explanation_source": "model",
+   "prior_verdict_in_memory": "BLOCK"
+  },
+  {
+   "lock_id": "LK-002",
+   "lock_claim": "The owner's name is Meera.",
+   "lock_quote": "Owner: Meera Sharma.",
+   "verdict": "ALLOW",
+   "basis": "second look layer 1 (identity acting subject): name=Meera; verb=wiped; quote=\"Meera wiped down the counter.\"",
+   "evidence_finding_ids": [
+    "DR-001"
+   ],
+   "quotes": [
+    "Meera wiped down the counter."
+   ],
+   "investigator_proposal": "REVIEW",
+   "challenger_stance": "AGREE",
+   "second_look": {
+    "layer": 1,
+    "rule": "IDENTITY_ACTING_SUBJECT",
+    "name": "Meera",
+    "verb": "wiped",
+    "quote": "Meera wiped down the counter."
+   },
+   "second_look_telemetry": {
+    "invoked": true,
+    "promoted": {
+     "layer": 1,
+     "rule": "IDENTITY_ACTING_SUBJECT",
+     "name": "Meera",
+     "verb": "wiped",
+     "quote": "Meera wiped down the counter."
+    }
+   },
+   "explanation": "The claim that the owner's name is Meera is allowed because the draft says \"Meera wiped down the counter.\" This supports the lock with no contradiction.",
+   "explanation_source": "model",
+   "prior_verdict_in_memory": "ALLOW"
+  }
+ ]
+}

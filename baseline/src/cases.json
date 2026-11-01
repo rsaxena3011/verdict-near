@@ -1,0 +1,774 @@
+[
+ {
+  "name": "attack_deleted_source",
+  "locks": [
+   {
+    "finding_id": "A3-LOCK",
+    "claim": "The night train leaves at 21:40.",
+    "quote": "Departure: 21:40, platform 2.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [],
+  "reviews": [],
+  "expect": {
+   "A3-LOCK": "REVIEW"
+  }
+ },
+ {
+  "name": "attack_paraphrase_no_tag",
+  "locks": [
+   {
+    "finding_id": "A4-LOCK",
+    "claim": "The cafe closes at 22:00.",
+    "quote": "The cafe closes at 22:00 sharp, every day.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [
+   {
+    "finding_id": "A4-DR",
+    "claim": "Draft describes the closing moment.",
+    "quote": "The shutters came down at half past eleven.",
+    "document_id": "draft-t",
+    "locator": "scene 5",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "reviews": [],
+  "expect": {
+   "A4-LOCK": "REVIEW"
+  }
+ },
+ {
+  "name": "attack_reviews_only_trap",
+  "locks": [
+   {
+    "finding_id": "A5-LOCK",
+    "claim": "The library opens at 09:00.",
+    "quote": "Library opens 09:00 daily.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [
+   {
+    "finding_id": "A5-DR",
+    "claim": "Draft mentions the library visit.",
+    "quote": "She reached the library in the morning.",
+    "document_id": "draft-t",
+    "locator": "scene 2",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "reviews": [
+   {
+    "finding_id": "A5-RV",
+    "claim": "Reviewer found the opening time stated as 10:30 in the margin notes.",
+    "quote": "Margin note: doors actually opened at 10:30.",
+    "document_id": "notes-t",
+    "locator": "para 4",
+    "contradicts": "A5-LOCK",
+    "unanswerable": "false"
+   }
+  ],
+  "expect": {
+   "A5-LOCK": "BLOCK"
+  }
+ },
+ {
+  "name": "attack_unsupported_allow",
+  "locks": [
+   {
+    "finding_id": "A6-LOCK",
+    "claim": "The owner's name is Meera.",
+    "quote": "Owner: Meera Sharma.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [
+   {
+    "finding_id": "A6-DR",
+    "claim": "Draft mentions a name in passing.",
+    "quote": "Meera was mentioned in the staff chat.",
+    "document_id": "draft-t",
+    "locator": "scene 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "reviews": [],
+  "expect": {
+   "A6-LOCK": "REVIEW"
+  }
+ },
+ {
+  "name": "breadth_block_01",
+  "locks": [
+   {
+    "finding_id": "B01-LOCK",
+    "claim": "Bakery opens at 07:00.",
+    "quote": "Bakery opens 07:00.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [
+   {
+    "finding_id": "B01-DR",
+    "claim": "draft says the first bake was at 08:15, not the 07:00 opening.",
+    "quote": "The first loaves came out at 08:15, an hour after the posted opening.",
+    "document_id": "draft-b",
+    "locator": "scene 1",
+    "contradicts": "B01-LOCK",
+    "unanswerable": "false"
+   }
+  ],
+  "reviews": [],
+  "expect": {
+   "B01-LOCK": "BLOCK"
+  }
+ },
+ {
+  "name": "breadth_block_02",
+  "locks": [
+   {
+    "finding_id": "B02-LOCK",
+    "claim": "The ticket costs 250 rupees.",
+    "quote": "Ticket price: Rs 250.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [
+   {
+    "finding_id": "B02-DR",
+    "claim": "draft states a Rs 300 payment against the Rs 250 lock.",
+    "quote": "He paid three hundred rupees at the counter.",
+    "document_id": "draft-b",
+    "locator": "scene 1",
+    "contradicts": "B02-LOCK",
+    "unanswerable": "false"
+   }
+  ],
+  "reviews": [],
+  "expect": {
+   "B02-LOCK": "BLOCK"
+  }
+ },
+ {
+  "name": "breadth_block_03",
+  "locks": [
+   {
+    "finding_id": "B03-LOCK",
+    "claim": "The museum is closed on Mondays.",
+    "quote": "Closed Mondays.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [
+   {
+    "finding_id": "B03-DR",
+    "claim": "draft shows a Monday visit against the closed-Monday lock.",
+    "quote": "On Monday the school group walked straight in.",
+    "document_id": "draft-b",
+    "locator": "scene 1",
+    "contradicts": "B03-LOCK",
+    "unanswerable": "false"
+   }
+  ],
+  "reviews": [],
+  "expect": {
+   "B03-LOCK": "BLOCK"
+  }
+ },
+ {
+  "name": "breadth_block_04",
+  "locks": [
+   {
+    "finding_id": "B04-LOCK",
+    "claim": "The pharmacy stocks insulin.",
+    "quote": "Insulin in stock.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [
+   {
+    "finding_id": "B04-DR",
+    "claim": "draft says insulin was out of stock.",
+    "quote": "The fridge shelf for insulin stood empty again.",
+    "document_id": "draft-b",
+    "locator": "scene 1",
+    "contradicts": "B04-LOCK",
+    "unanswerable": "false"
+   }
+  ],
+  "reviews": [],
+  "expect": {
+   "B04-LOCK": "BLOCK"
+  }
+ },
+ {
+  "name": "breadth_block_05",
+  "locks": [
+   {
+    "finding_id": "B05-LOCK",
+    "claim": "The gym admits members over 16 only.",
+    "quote": "Minimum age: 16.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [
+   {
+    "finding_id": "B05-DR",
+    "claim": "draft admits a 14-year-old against the 16+ lock.",
+    "quote": "The fourteen-year-old signed up without a question.",
+    "document_id": "draft-b",
+    "locator": "scene 1",
+    "contradicts": "B05-LOCK",
+    "unanswerable": "false"
+   }
+  ],
+  "reviews": [],
+  "expect": {
+   "B05-LOCK": "BLOCK"
+  }
+ },
+ {
+  "name": "breadth_block_06",
+  "locks": [
+   {
+    "finding_id": "B06-LOCK",
+    "claim": "The ferry carries 40 passengers.",
+    "quote": "Capacity: 40 passengers.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [
+   {
+    "finding_id": "B06-DR",
+    "claim": "draft shows 51 passengers against the 40 capacity lock.",
+    "quote": "Fifty-one people squeezed onto the deck.",
+    "document_id": "draft-b",
+    "locator": "scene 1",
+    "contradicts": "B06-LOCK",
+    "unanswerable": "false"
+   }
+  ],
+  "reviews": [],
+  "expect": {
+   "B06-LOCK": "BLOCK"
+  }
+ },
+ {
+  "name": "breadth_block_07",
+  "locks": [
+   {
+    "finding_id": "B07-LOCK",
+    "claim": "The workshop ends on Friday.",
+    "quote": "Workshop: Mon to Fri.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [
+   {
+    "finding_id": "B07-DR",
+    "claim": "draft shows a Saturday session against the Friday-end lock.",
+    "quote": "Saturday's session ran past lunch.",
+    "document_id": "draft-b",
+    "locator": "scene 1",
+    "contradicts": "B07-LOCK",
+    "unanswerable": "false"
+   }
+  ],
+  "reviews": [],
+  "expect": {
+   "B07-LOCK": "BLOCK"
+  }
+ },
+ {
+  "name": "breadth_block_08",
+  "locks": [
+   {
+    "finding_id": "B08-LOCK",
+    "claim": "The clinic's doctor is Dr. Rao.",
+    "quote": "Attending doctor: Dr. Rao.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [
+   {
+    "finding_id": "B08-DR",
+    "claim": "draft names Dr. Iyer against the Dr. Rao lock.",
+    "quote": "Dr. Iyer signed the prescription pad.",
+    "document_id": "draft-b",
+    "locator": "scene 1",
+    "contradicts": "B08-LOCK",
+    "unanswerable": "false"
+   }
+  ],
+  "reviews": [],
+  "expect": {
+   "B08-LOCK": "BLOCK"
+  }
+ },
+ {
+  "name": "breadth_allow_01",
+  "locks": [
+   {
+    "finding_id": "C01-LOCK",
+    "claim": "The cafe opens at 08:00.",
+    "quote": "Cafe opens 08:00.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [
+   {
+    "finding_id": "C01-DR",
+    "claim": "draft confirms the 08:00 opening.",
+    "quote": "At eight sharp she flipped the sign to open.",
+    "document_id": "draft-c",
+    "locator": "scene 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "reviews": [],
+  "expect": {
+   "C01-LOCK": "ALLOW"
+  }
+ },
+ {
+  "name": "breadth_allow_02",
+  "locks": [
+   {
+    "finding_id": "C02-LOCK",
+    "claim": "The librarian is Mr. Kapoor.",
+    "quote": "Librarian: Mr. Kapoor.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [
+   {
+    "finding_id": "C02-DR",
+    "claim": "draft names Mr. Kapoor as librarian in action.",
+    "quote": "Mr. Kapoor stamped the returned books.",
+    "document_id": "draft-c",
+    "locator": "scene 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "reviews": [],
+  "expect": {
+   "C02-LOCK": "ALLOW"
+  }
+ },
+ {
+  "name": "breadth_allow_03",
+  "locks": [
+   {
+    "finding_id": "C03-LOCK",
+    "claim": "The rent is due on the 5th.",
+    "quote": "Rent due: 5th of the month.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [
+   {
+    "finding_id": "C03-DR",
+    "claim": "draft confirms payment on the 5th.",
+    "quote": "On the 5th, the transfer went through as always.",
+    "document_id": "draft-c",
+    "locator": "scene 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "reviews": [],
+  "expect": {
+   "C03-LOCK": "ALLOW"
+  }
+ },
+ {
+  "name": "breadth_allow_04",
+  "locks": [
+   {
+    "finding_id": "C04-LOCK",
+    "claim": "The garden gate stays locked at night.",
+    "quote": "Gate locked after 21:00.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [
+   {
+    "finding_id": "C04-DR",
+    "claim": "draft confirms the gate locked at night.",
+    "quote": "She checked the gate at ten; it was locked fast.",
+    "document_id": "draft-c",
+    "locator": "scene 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "reviews": [],
+  "expect": {
+   "C04-LOCK": "ALLOW"
+  }
+ },
+ {
+  "name": "breadth_allow_05",
+  "locks": [
+   {
+    "finding_id": "C05-LOCK",
+    "claim": "The train has six coaches.",
+    "quote": "Consist: six coaches.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [
+   {
+    "finding_id": "C05-DR",
+    "claim": "draft counts six coaches.",
+    "quote": "He counted the coaches as it rolled in: six.",
+    "document_id": "draft-c",
+    "locator": "scene 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "reviews": [],
+  "expect": {
+   "C05-LOCK": "ALLOW"
+  }
+ },
+ {
+  "name": "breadth_allow_06",
+  "locks": [
+   {
+    "finding_id": "C06-LOCK",
+    "claim": "The school bell rings at 09:15.",
+    "quote": "First bell: 09:15.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [
+   {
+    "finding_id": "C06-DR",
+    "claim": "draft confirms the 09:15 bell.",
+    "quote": "The bell rang at quarter past nine and the lines formed.",
+    "document_id": "draft-c",
+    "locator": "scene 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "reviews": [],
+  "expect": {
+   "C06-LOCK": "ALLOW"
+  }
+ },
+ {
+  "name": "breadth_allow_07",
+  "locks": [
+   {
+    "finding_id": "C07-LOCK",
+    "claim": "The recipe uses two eggs.",
+    "quote": "Eggs: two.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [
+   {
+    "finding_id": "C07-DR",
+    "claim": "draft uses two eggs.",
+    "quote": "She cracked two eggs into the bowl.",
+    "document_id": "draft-c",
+    "locator": "scene 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "reviews": [],
+  "expect": {
+   "C07-LOCK": "ALLOW"
+  }
+ },
+ {
+  "name": "breadth_allow_08",
+  "locks": [
+   {
+    "finding_id": "C08-LOCK",
+    "claim": "The office closes for lunch 13:00 to 14:00.",
+    "quote": "Lunch closure: 13:00-14:00.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [
+   {
+    "finding_id": "C08-DR",
+    "claim": "draft confirms the lunch closure.",
+    "quote": "At half past one the office door still said closed for lunch.",
+    "document_id": "draft-c",
+    "locator": "scene 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "reviews": [],
+  "expect": {
+   "C08-LOCK": "ALLOW"
+  }
+ },
+ {
+  "name": "breadth_review_01",
+  "locks": [
+   {
+    "finding_id": "D01-LOCK",
+    "claim": "The storeroom key hangs by the door.",
+    "quote": "Key: hook by the door.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [],
+  "reviews": [],
+  "expect": {
+   "D01-LOCK": "REVIEW"
+  }
+ },
+ {
+  "name": "breadth_review_02",
+  "locks": [
+   {
+    "finding_id": "D02-LOCK",
+    "claim": "The well is twelve feet deep.",
+    "quote": "Well depth: twelve feet.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [],
+  "reviews": [],
+  "expect": {
+   "D02-LOCK": "REVIEW"
+  }
+ },
+ {
+  "name": "breadth_review_03",
+  "locks": [
+   {
+    "finding_id": "D03-LOCK",
+    "claim": "The choir practices on Thursdays.",
+    "quote": "Choir: Thursdays.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [
+   {
+    "finding_id": "D03-DR",
+    "claim": "draft mentions the hall but not the choir day.",
+    "quote": "The hall was quiet that week.",
+    "document_id": "draft-d",
+    "locator": "scene 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "reviews": [],
+  "expect": {
+   "D03-LOCK": "REVIEW"
+  }
+ },
+ {
+  "name": "breadth_review_04",
+  "locks": [
+   {
+    "finding_id": "D04-LOCK",
+    "claim": "The blacksmith's son is named Dev.",
+    "quote": "Son: Dev.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [
+   {
+    "finding_id": "D04-DR",
+    "claim": "draft shows a boy but never names him.",
+    "quote": "A boy ran past the forge, laughing.",
+    "document_id": "draft-d",
+    "locator": "scene 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "reviews": [],
+  "expect": {
+   "D04-LOCK": "REVIEW"
+  }
+ },
+ {
+  "name": "breadth_review_05",
+  "locks": [
+   {
+    "finding_id": "D05-LOCK",
+    "claim": "The orchard has forty mango trees.",
+    "quote": "Mango trees: forty.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [
+   {
+    "finding_id": "D05-DR",
+    "claim": "draft describes the orchard without a count.",
+    "quote": "The orchard stretched further than she could count.",
+    "document_id": "draft-d",
+    "locator": "scene 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "reviews": [],
+  "expect": {
+   "D05-LOCK": "REVIEW"
+  }
+ },
+ {
+  "name": "breadth_review_06",
+  "locks": [
+   {
+    "finding_id": "D06-LOCK",
+    "claim": "The post arrives before noon.",
+    "quote": "Post: before noon.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [],
+  "reviews": [],
+  "expect": {
+   "D06-LOCK": "REVIEW"
+  }
+ },
+ {
+  "name": "breadth_review_07",
+  "locks": [
+   {
+    "finding_id": "D07-LOCK",
+    "claim": "The lighthouse keeper keeps a cat.",
+    "quote": "Keeper's cat: yes.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [
+   {
+    "finding_id": "D07-DR",
+    "claim": "draft hints at an animal without confirming the cat.",
+    "quote": "Something small slipped behind the lamp room door.",
+    "document_id": "draft-d",
+    "locator": "scene 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "reviews": [],
+  "expect": {
+   "D07-LOCK": "REVIEW"
+  }
+ },
+ {
+  "name": "breadth_review_08",
+  "locks": [
+   {
+    "finding_id": "D08-LOCK",
+    "claim": "The bridge toll is ten rupees.",
+    "quote": "Toll: Rs 10.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [],
+  "reviews": [],
+  "expect": {
+   "D08-LOCK": "REVIEW"
+  }
+ }
+]

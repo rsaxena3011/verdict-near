@@ -1,0 +1,89 @@
+[
+ {
+  "name": "mirror_role",
+  "locks": [
+   {
+    "finding_id": "M1-LOCK",
+    "claim": "The librarian is Mr. Kapoor.",
+    "quote": "Librarian: Mr. Kapoor.",
+    "document_id": "locks-m",
+    "locator": "scene 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [
+   {
+    "finding_id": "M1-DR",
+    "claim": "draft names Mrs. Rao doing the librarian's defining task, against the Mr. Kapoor lock.",
+    "quote": "Mrs. Rao stamped the returned books.",
+    "document_id": "draft-m",
+    "locator": "scene 1",
+    "contradicts": "M1-LOCK",
+    "unanswerable": "false"
+   }
+  ],
+  "reviews": [],
+  "expect": {
+   "M1-LOCK": "BLOCK"
+  }
+ },
+ {
+  "name": "mirror_state",
+  "locks": [
+   {
+    "finding_id": "M2-LOCK",
+    "claim": "The garden gate stays locked at night.",
+    "quote": "Gate locked after 21:00.",
+    "document_id": "locks-m",
+    "locator": "scene 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [
+   {
+    "finding_id": "M2-DR",
+    "claim": "draft shows the gate wide open at ten, against the locked-at-night lock.",
+    "quote": "She checked the gate at ten; it stood wide open.",
+    "document_id": "draft-m",
+    "locator": "scene 1",
+    "contradicts": "M2-LOCK",
+    "unanswerable": "false"
+   }
+  ],
+  "reviews": [],
+  "expect": {
+   "M2-LOCK": "BLOCK"
+  }
+ },
+ {
+  "name": "mirror_schedule",
+  "locks": [
+   {
+    "finding_id": "M3-LOCK",
+    "claim": "The rent is due on the 5th.",
+    "quote": "Rent due: 5th of the month.",
+    "document_id": "locks-m",
+    "locator": "scene 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [
+   {
+    "finding_id": "M3-DR",
+    "claim": "draft shows a routine transfer on the 9th, not the locked 5th; no tag: a late or unrelated transfer does not by itself break a due date.",
+    "quote": "On the 9th, the transfer went through as always.",
+    "document_id": "draft-m",
+    "locator": "scene 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "reviews": [],
+  "expect": {
+   "M3-LOCK": "REVIEW"
+  }
+ }
+]

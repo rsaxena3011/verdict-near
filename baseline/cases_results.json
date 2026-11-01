@@ -1,0 +1,770 @@
+[
+ {
+  "name": "attack_deleted_source",
+  "agent_sources": {
+   "investigator": "model",
+   "challenger": "model"
+  },
+  "rejected_quotes": [],
+  "decisions": [
+   {
+    "lock_id": "A3-LOCK",
+    "verdict": "REVIEW",
+    "expected": "REVIEW",
+    "ok": true,
+    "basis": "no quoted evidence",
+    "investigator_proposal": "REVIEW",
+    "challenger_stance": "AGREE",
+    "second_look": null,
+    "second_look_telemetry": null
+   }
+  ]
+ },
+ {
+  "name": "attack_paraphrase_no_tag",
+  "agent_sources": {
+   "investigator": "model",
+   "challenger": "model"
+  },
+  "rejected_quotes": [],
+  "decisions": [
+   {
+    "lock_id": "A4-LOCK",
+    "verdict": "REVIEW",
+    "expected": "REVIEW",
+    "ok": true,
+    "basis": "agent claims a break the structured record cannot confirm",
+    "investigator_proposal": "BLOCK",
+    "challenger_stance": "AGREE",
+    "second_look": null,
+    "second_look_telemetry": null
+   }
+  ]
+ },
+ {
+  "name": "attack_reviews_only_trap",
+  "agent_sources": {
+   "investigator": "model",
+   "challenger": "model"
+  },
+  "rejected_quotes": [],
+  "decisions": [
+   {
+    "lock_id": "A5-LOCK",
+    "verdict": "BLOCK",
+    "expected": "BLOCK",
+    "ok": true,
+    "basis": "structured contradiction in the record: A5-RV",
+    "investigator_proposal": "BLOCK",
+    "challenger_stance": "AGREE",
+    "second_look": null,
+    "second_look_telemetry": null
+   }
+  ]
+ },
+ {
+  "name": "attack_unsupported_allow",
+  "agent_sources": {
+   "investigator": "model",
+   "challenger": "model"
+  },
+  "rejected_quotes": [],
+  "decisions": [
+   {
+    "lock_id": "A6-LOCK",
+    "verdict": "REVIEW",
+    "expected": "REVIEW",
+    "ok": true,
+    "basis": "investigator judges the quoted evidence does not settle the lock",
+    "investigator_proposal": "REVIEW",
+    "challenger_stance": "AGREE",
+    "second_look": null,
+    "second_look_telemetry": {
+     "invoked": true,
+     "layer2": [
+      {
+       "quote": "Meera was mentioned in the staff chat.",
+       "classification": {
+        "element": "Meera",
+        "element_in_quote": "Meera",
+        "relation": "MENTIONS",
+        "mode": "NONE",
+        "anchor_span": "Meera",
+        "predicate_span": "was mentioned in the staff chat",
+        "scope": "SINGLE",
+        "any_break": "NO",
+        "proposal": "REVIEW"
+       },
+       "veto": {
+        "concurs": false,
+        "reason": "The quote only mentions Meera in a chat, which does not verify the owner's name and could be true even if the owner is not Meera."
+       },
+       "gates_ok": false,
+       "gate_reasons": [
+        "combination not allowed: relation=MENTIONS mode=NONE scope=SINGLE",
+        "challenger did not concur"
+       ]
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "name": "breadth_block_01",
+  "agent_sources": {
+   "investigator": "model",
+   "challenger": "model"
+  },
+  "rejected_quotes": [],
+  "decisions": [
+   {
+    "lock_id": "B01-LOCK",
+    "verdict": "BLOCK",
+    "expected": "BLOCK",
+    "ok": true,
+    "basis": "structured contradiction in the record: B01-DR",
+    "investigator_proposal": "BLOCK",
+    "challenger_stance": "AGREE",
+    "second_look": null,
+    "second_look_telemetry": null
+   }
+  ]
+ },
+ {
+  "name": "breadth_block_02",
+  "agent_sources": {
+   "investigator": "model",
+   "challenger": "model"
+  },
+  "rejected_quotes": [],
+  "decisions": [
+   {
+    "lock_id": "B02-LOCK",
+    "verdict": "BLOCK",
+    "expected": "BLOCK",
+    "ok": true,
+    "basis": "structured contradiction in the record: B02-DR",
+    "investigator_proposal": "BLOCK",
+    "challenger_stance": "AGREE",
+    "second_look": null,
+    "second_look_telemetry": null
+   }
+  ]
+ },
+ {
+  "name": "breadth_block_03",
+  "agent_sources": {
+   "investigator": "model",
+   "challenger": "model"
+  },
+  "rejected_quotes": [],
+  "decisions": [
+   {
+    "lock_id": "B03-LOCK",
+    "verdict": "BLOCK",
+    "expected": "BLOCK",
+    "ok": true,
+    "basis": "structured contradiction in the record: B03-DR",
+    "investigator_proposal": "BLOCK",
+    "challenger_stance": "AGREE",
+    "second_look": null,
+    "second_look_telemetry": null
+   }
+  ]
+ },
+ {
+  "name": "breadth_block_04",
+  "agent_sources": {
+   "investigator": "model",
+   "challenger": "model"
+  },
+  "rejected_quotes": [],
+  "decisions": [
+   {
+    "lock_id": "B04-LOCK",
+    "verdict": "BLOCK",
+    "expected": "BLOCK",
+    "ok": true,
+    "basis": "structured contradiction in the record: B04-DR",
+    "investigator_proposal": "BLOCK",
+    "challenger_stance": "AGREE",
+    "second_look": null,
+    "second_look_telemetry": null
+   }
+  ]
+ },
+ {
+  "name": "breadth_block_05",
+  "agent_sources": {
+   "investigator": "model",
+   "challenger": "model"
+  },
+  "rejected_quotes": [],
+  "decisions": [
+   {
+    "lock_id": "B05-LOCK",
+    "verdict": "BLOCK",
+    "expected": "BLOCK",
+    "ok": true,
+    "basis": "structured contradiction in the record: B05-DR",
+    "investigator_proposal": "BLOCK",
+    "challenger_stance": "AGREE",
+    "second_look": null,
+    "second_look_telemetry": null
+   }
+  ]
+ },
+ {
+  "name": "breadth_block_06",
+  "agent_sources": {
+   "investigator": "model",
+   "challenger": "model"
+  },
+  "rejected_quotes": [],
+  "decisions": [
+   {
+    "lock_id": "B06-LOCK",
+    "verdict": "BLOCK",
+    "expected": "BLOCK",
+    "ok": true,
+    "basis": "structured contradiction in the record: B06-DR",
+    "investigator_proposal": "BLOCK",
+    "challenger_stance": "AGREE",
+    "second_look": null,
+    "second_look_telemetry": null
+   }
+  ]
+ },
+ {
+  "name": "breadth_block_07",
+  "agent_sources": {
+   "investigator": "model",
+   "challenger": "model"
+  },
+  "rejected_quotes": [],
+  "decisions": [
+   {
+    "lock_id": "B07-LOCK",
+    "verdict": "BLOCK",
+    "expected": "BLOCK",
+    "ok": true,
+    "basis": "structured contradiction in the record: B07-DR",
+    "investigator_proposal": "BLOCK",
+    "challenger_stance": "AGREE",
+    "second_look": null,
+    "second_look_telemetry": null
+   }
+  ]
+ },
+ {
+  "name": "breadth_block_08",
+  "agent_sources": {
+   "investigator": "model",
+   "challenger": "model"
+  },
+  "rejected_quotes": [],
+  "decisions": [
+   {
+    "lock_id": "B08-LOCK",
+    "verdict": "BLOCK",
+    "expected": "BLOCK",
+    "ok": true,
+    "basis": "structured contradiction in the record: B08-DR",
+    "investigator_proposal": "BLOCK",
+    "challenger_stance": "AGREE",
+    "second_look": null,
+    "second_look_telemetry": null
+   }
+  ]
+ },
+ {
+  "name": "breadth_allow_01",
+  "agent_sources": {
+   "investigator": "model",
+   "challenger": "model"
+  },
+  "rejected_quotes": [],
+  "decisions": [
+   {
+    "lock_id": "C01-LOCK",
+    "verdict": "ALLOW",
+    "expected": "ALLOW",
+    "ok": true,
+    "basis": "quoted evidence supports the lock; no contradiction in the record",
+    "investigator_proposal": "ALLOW",
+    "challenger_stance": "AGREE",
+    "second_look": null,
+    "second_look_telemetry": null
+   }
+  ]
+ },
+ {
+  "name": "breadth_allow_02",
+  "agent_sources": {
+   "investigator": "model",
+   "challenger": "model"
+  },
+  "rejected_quotes": [],
+  "decisions": [
+   {
+    "lock_id": "C02-LOCK",
+    "verdict": "ALLOW",
+    "expected": "ALLOW",
+    "ok": true,
+    "basis": "second look layer 1 (identity acting subject): name=Kapoor; verb=stamped; quote=\"Mr. Kapoor stamped the returned books.\"",
+    "investigator_proposal": "REVIEW",
+    "challenger_stance": "AGREE",
+    "second_look": {
+     "layer": 1,
+     "rule": "IDENTITY_ACTING_SUBJECT",
+     "name": "Kapoor",
+     "verb": "stamped",
+     "quote": "Mr. Kapoor stamped the returned books."
+    },
+    "second_look_telemetry": {
+     "invoked": true,
+     "promoted": {
+      "layer": 1,
+      "rule": "IDENTITY_ACTING_SUBJECT",
+      "name": "Kapoor",
+      "verb": "stamped",
+      "quote": "Mr. Kapoor stamped the returned books."
+     }
+    }
+   }
+  ]
+ },
+ {
+  "name": "breadth_allow_03",
+  "agent_sources": {
+   "investigator": "model",
+   "challenger": "model"
+  },
+  "rejected_quotes": [],
+  "decisions": [
+   {
+    "lock_id": "C03-LOCK",
+    "verdict": "REVIEW",
+    "expected": "ALLOW",
+    "ok": false,
+    "basis": "investigator judges the quoted evidence does not settle the lock",
+    "investigator_proposal": "REVIEW",
+    "challenger_stance": "AGREE",
+    "second_look": null,
+    "second_look_telemetry": {
+     "invoked": true,
+     "layer2": [
+      {
+       "quote": "On the 5th, the transfer went through as always.",
+       "classification": {
+        "element": "5th",
+        "element_in_quote": "5th",
+        "relation": "INSTANTIATES",
+        "mode": "SCHEDULE_RECURRENCE",
+        "anchor_span": "the transfer",
+        "predicate_span": "went through as always",
+        "scope": "HABITUAL-WITH-RECURRENCE",
+        "any_break": "NO",
+        "proposal": "ALLOW"
+       },
+       "veto": {
+        "concurs": false,
+        "reason": "The quote does not identify the transfer as rent, so it could be true even if rent is not due on the 5th."
+       },
+       "gates_ok": false,
+       "gate_reasons": [
+        "challenger did not concur"
+       ]
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "name": "breadth_allow_04",
+  "agent_sources": {
+   "investigator": "model",
+   "challenger": "model"
+  },
+  "rejected_quotes": [],
+  "decisions": [
+   {
+    "lock_id": "C04-LOCK",
+    "verdict": "ALLOW",
+    "expected": "ALLOW",
+    "ok": true,
+    "basis": "quoted evidence supports the lock; no contradiction in the record",
+    "investigator_proposal": "ALLOW",
+    "challenger_stance": "AGREE",
+    "second_look": null,
+    "second_look_telemetry": null
+   }
+  ]
+ },
+ {
+  "name": "breadth_allow_05",
+  "agent_sources": {
+   "investigator": "model",
+   "challenger": "model"
+  },
+  "rejected_quotes": [],
+  "decisions": [
+   {
+    "lock_id": "C05-LOCK",
+    "verdict": "ALLOW",
+    "expected": "ALLOW",
+    "ok": true,
+    "basis": "quoted evidence supports the lock; no contradiction in the record",
+    "investigator_proposal": "ALLOW",
+    "challenger_stance": "AGREE",
+    "second_look": null,
+    "second_look_telemetry": null
+   }
+  ]
+ },
+ {
+  "name": "breadth_allow_06",
+  "agent_sources": {
+   "investigator": "model",
+   "challenger": "model"
+  },
+  "rejected_quotes": [],
+  "decisions": [
+   {
+    "lock_id": "C06-LOCK",
+    "verdict": "ALLOW",
+    "expected": "ALLOW",
+    "ok": true,
+    "basis": "quoted evidence supports the lock; no contradiction in the record",
+    "investigator_proposal": "ALLOW",
+    "challenger_stance": "AGREE",
+    "second_look": null,
+    "second_look_telemetry": null
+   }
+  ]
+ },
+ {
+  "name": "breadth_allow_07",
+  "agent_sources": {
+   "investigator": "model",
+   "challenger": "model"
+  },
+  "rejected_quotes": [],
+  "decisions": [
+   {
+    "lock_id": "C07-LOCK",
+    "verdict": "ALLOW",
+    "expected": "ALLOW",
+    "ok": true,
+    "basis": "quoted evidence supports the lock; no contradiction in the record",
+    "investigator_proposal": "ALLOW",
+    "challenger_stance": "AGREE",
+    "second_look": null,
+    "second_look_telemetry": null
+   }
+  ]
+ },
+ {
+  "name": "breadth_allow_08",
+  "agent_sources": {
+   "investigator": "model",
+   "challenger": "model"
+  },
+  "rejected_quotes": [],
+  "decisions": [
+   {
+    "lock_id": "C08-LOCK",
+    "verdict": "ALLOW",
+    "expected": "ALLOW",
+    "ok": true,
+    "basis": "quoted evidence supports the lock; no contradiction in the record",
+    "investigator_proposal": "ALLOW",
+    "challenger_stance": "AGREE",
+    "second_look": null,
+    "second_look_telemetry": null
+   }
+  ]
+ },
+ {
+  "name": "breadth_review_01",
+  "agent_sources": {
+   "investigator": "model",
+   "challenger": "model"
+  },
+  "rejected_quotes": [],
+  "decisions": [
+   {
+    "lock_id": "D01-LOCK",
+    "verdict": "REVIEW",
+    "expected": "REVIEW",
+    "ok": true,
+    "basis": "no quoted evidence",
+    "investigator_proposal": "REVIEW",
+    "challenger_stance": "AGREE",
+    "second_look": null,
+    "second_look_telemetry": null
+   }
+  ]
+ },
+ {
+  "name": "breadth_review_02",
+  "agent_sources": {
+   "investigator": "model",
+   "challenger": "model"
+  },
+  "rejected_quotes": [],
+  "decisions": [
+   {
+    "lock_id": "D02-LOCK",
+    "verdict": "REVIEW",
+    "expected": "REVIEW",
+    "ok": true,
+    "basis": "no quoted evidence",
+    "investigator_proposal": "REVIEW",
+    "challenger_stance": "AGREE",
+    "second_look": null,
+    "second_look_telemetry": null
+   }
+  ]
+ },
+ {
+  "name": "breadth_review_03",
+  "agent_sources": {
+   "investigator": "model",
+   "challenger": "model"
+  },
+  "rejected_quotes": [],
+  "decisions": [
+   {
+    "lock_id": "D03-LOCK",
+    "verdict": "REVIEW",
+    "expected": "REVIEW",
+    "ok": true,
+    "basis": "investigator judges the quoted evidence does not settle the lock",
+    "investigator_proposal": "REVIEW",
+    "challenger_stance": "AGREE",
+    "second_look": null,
+    "second_look_telemetry": {
+     "invoked": true,
+     "layer2": [
+      {
+       "quote": "The hall was quiet that week.",
+       "classification": {
+        "element": "Thursdays",
+        "element_in_quote": "ABSENT",
+        "relation": "MENTIONS",
+        "mode": "NONE",
+        "anchor_span": "The hall",
+        "predicate_span": "was quiet that week",
+        "scope": "HABITUAL-NO-RECURRENCE",
+        "any_break": "NO",
+        "proposal": "REVIEW"
+       },
+       "veto": {
+        "concurs": false,
+        "reason": "Thursdays is absent from the quote, and a quiet hall could be true even if the choir does not practice on Thursdays."
+       },
+       "gates_ok": false,
+       "gate_reasons": [
+        "element_in_quote is absent or not verbatim in the quote",
+        "element and element_in_quote differ after normalization",
+        "challenger did not concur"
+       ]
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "name": "breadth_review_04",
+  "agent_sources": {
+   "investigator": "model",
+   "challenger": "model"
+  },
+  "rejected_quotes": [],
+  "decisions": [
+   {
+    "lock_id": "D04-LOCK",
+    "verdict": "REVIEW",
+    "expected": "REVIEW",
+    "ok": true,
+    "basis": "investigator judges the quoted evidence does not settle the lock",
+    "investigator_proposal": "REVIEW",
+    "challenger_stance": "AGREE",
+    "second_look": null,
+    "second_look_telemetry": {
+     "invoked": true,
+     "layer2": [
+      {
+       "quote": "A boy ran past the forge, laughing.",
+       "classification": {
+        "element": "Dev",
+        "element_in_quote": "ABSENT",
+        "relation": "MENTIONS",
+        "mode": "NONE",
+        "anchor_span": "A boy",
+        "predicate_span": "ran past the forge, laughing",
+        "scope": "SINGLE",
+        "any_break": "NO",
+        "proposal": "REVIEW"
+       },
+       "veto": {
+        "concurs": false,
+        "reason": "The quote does not mention Dev and only describes a boy running past the forge, which could be true even if the blacksmith's son is not named Dev."
+       },
+       "gates_ok": false,
+       "gate_reasons": [
+        "element_in_quote is absent or not verbatim in the quote",
+        "element and element_in_quote differ after normalization",
+        "challenger did not concur"
+       ]
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "name": "breadth_review_05",
+  "agent_sources": {
+   "investigator": "model",
+   "challenger": "model"
+  },
+  "rejected_quotes": [],
+  "decisions": [
+   {
+    "lock_id": "D05-LOCK",
+    "verdict": "REVIEW",
+    "expected": "REVIEW",
+    "ok": true,
+    "basis": "investigator judges the quoted evidence does not settle the lock",
+    "investigator_proposal": "REVIEW",
+    "challenger_stance": "AGREE",
+    "second_look": null,
+    "second_look_telemetry": {
+     "invoked": true,
+     "layer2": [
+      {
+       "quote": "The orchard stretched further than she could count.",
+       "classification": {
+        "element": "forty",
+        "element_in_quote": "ABSENT",
+        "relation": "MENTIONS",
+        "mode": "NONE",
+        "anchor_span": "The orchard",
+        "predicate_span": "stretched further than she could count",
+        "scope": "SINGLE",
+        "any_break": "NO",
+        "proposal": "REVIEW"
+       },
+       "veto": {
+        "concurs": false,
+        "reason": "The quote lacks the number forty and only describes the orchard's vastness, which could be true even if it does not have forty mango trees."
+       },
+       "gates_ok": false,
+       "gate_reasons": [
+        "element_in_quote is absent or not verbatim in the quote",
+        "element and element_in_quote differ after normalization",
+        "challenger did not concur"
+       ]
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "name": "breadth_review_06",
+  "agent_sources": {
+   "investigator": "model",
+   "challenger": "model"
+  },
+  "rejected_quotes": [],
+  "decisions": [
+   {
+    "lock_id": "D06-LOCK",
+    "verdict": "REVIEW",
+    "expected": "REVIEW",
+    "ok": true,
+    "basis": "no quoted evidence",
+    "investigator_proposal": "REVIEW",
+    "challenger_stance": "AGREE",
+    "second_look": null,
+    "second_look_telemetry": null
+   }
+  ]
+ },
+ {
+  "name": "breadth_review_07",
+  "agent_sources": {
+   "investigator": "model",
+   "challenger": "model"
+  },
+  "rejected_quotes": [],
+  "decisions": [
+   {
+    "lock_id": "D07-LOCK",
+    "verdict": "REVIEW",
+    "expected": "REVIEW",
+    "ok": true,
+    "basis": "investigator judges the quoted evidence does not settle the lock",
+    "investigator_proposal": "REVIEW",
+    "challenger_stance": "AGREE",
+    "second_look": null,
+    "second_look_telemetry": {
+     "invoked": true,
+     "layer2": [
+      {
+       "quote": "Something small slipped behind the lamp room door.",
+       "classification": {
+        "element": "cat",
+        "element_in_quote": "ABSENT",
+        "relation": "MENTIONS",
+        "mode": "NONE",
+        "anchor_span": "Something small",
+        "predicate_span": "slipped behind the lamp room door",
+        "scope": "HABITUAL-NO-RECURRENCE",
+        "any_break": "NO",
+        "proposal": "REVIEW"
+       },
+       "veto": {
+        "concurs": false,
+        "reason": "The quote does not mention a cat and only describes something small slipping behind a door, which could be true even if the lighthouse keeper keeps no cat."
+       },
+       "gates_ok": false,
+       "gate_reasons": [
+        "element_in_quote is absent or not verbatim in the quote",
+        "element and element_in_quote differ after normalization",
+        "challenger did not concur"
+       ]
+      }
+     ]
+    }
+   }
+  ]
+ },
+ {
+  "name": "breadth_review_08",
+  "agent_sources": {
+   "investigator": "model",
+   "challenger": "model"
+  },
+  "rejected_quotes": [],
+  "decisions": [
+   {
+    "lock_id": "D08-LOCK",
+    "verdict": "REVIEW",
+    "expected": "REVIEW",
+    "ok": true,
+    "basis": "no quoted evidence",
+    "investigator_proposal": "REVIEW",
+    "challenger_stance": "AGREE",
+    "second_look": null,
+    "second_look_telemetry": null
+   }
+  ]
+ }
+]

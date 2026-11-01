@@ -1,0 +1,214 @@
+[
+ {
+  "name": "breadth_allow_02",
+  "locks": [
+   {
+    "finding_id": "C02-LOCK",
+    "claim": "The librarian is Mr. Kapoor.",
+    "quote": "Librarian: Mr. Kapoor.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [
+   {
+    "finding_id": "C02-DR",
+    "claim": "draft names Mr. Kapoor as librarian in action.",
+    "quote": "Mr. Kapoor stamped the returned books.",
+    "document_id": "draft-c",
+    "locator": "scene 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "reviews": [],
+  "expect": {
+   "C02-LOCK": "ALLOW"
+  }
+ },
+ {
+  "name": "breadth_allow_03",
+  "locks": [
+   {
+    "finding_id": "C03-LOCK",
+    "claim": "The rent is due on the 5th.",
+    "quote": "Rent due: 5th of the month.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [
+   {
+    "finding_id": "C03-DR",
+    "claim": "draft confirms payment on the 5th.",
+    "quote": "On the 5th, the transfer went through as always.",
+    "document_id": "draft-c",
+    "locator": "scene 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "reviews": [],
+  "expect": {
+   "C03-LOCK": "ALLOW"
+  }
+ },
+ {
+  "name": "breadth_allow_04",
+  "locks": [
+   {
+    "finding_id": "C04-LOCK",
+    "claim": "The garden gate stays locked at night.",
+    "quote": "Gate locked after 21:00.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [
+   {
+    "finding_id": "C04-DR",
+    "claim": "draft confirms the gate locked at night.",
+    "quote": "She checked the gate at ten; it was locked fast.",
+    "document_id": "draft-c",
+    "locator": "scene 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "reviews": [],
+  "expect": {
+   "C04-LOCK": "ALLOW"
+  }
+ },
+ {
+  "name": "attack_unsupported_allow",
+  "locks": [
+   {
+    "finding_id": "A6-LOCK",
+    "claim": "The owner's name is Meera.",
+    "quote": "Owner: Meera Sharma.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [
+   {
+    "finding_id": "A6-DR",
+    "claim": "Draft mentions a name in passing.",
+    "quote": "Meera was mentioned in the staff chat.",
+    "document_id": "draft-t",
+    "locator": "scene 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "reviews": [],
+  "expect": {
+   "A6-LOCK": "REVIEW"
+  }
+ },
+ {
+  "name": "breadth_review_01",
+  "locks": [
+   {
+    "finding_id": "D01-LOCK",
+    "claim": "The storeroom key hangs by the door.",
+    "quote": "Key: hook by the door.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [],
+  "reviews": [],
+  "expect": {
+   "D01-LOCK": "REVIEW"
+  }
+ },
+ {
+  "name": "breadth_review_02",
+  "locks": [
+   {
+    "finding_id": "D02-LOCK",
+    "claim": "The well is twelve feet deep.",
+    "quote": "Well depth: twelve feet.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [],
+  "reviews": [],
+  "expect": {
+   "D02-LOCK": "REVIEW"
+  }
+ },
+ {
+  "name": "breadth_review_03",
+  "locks": [
+   {
+    "finding_id": "D03-LOCK",
+    "claim": "The choir practices on Thursdays.",
+    "quote": "Choir: Thursdays.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [
+   {
+    "finding_id": "D03-DR",
+    "claim": "draft mentions the hall but not the choir day.",
+    "quote": "The hall was quiet that week.",
+    "document_id": "draft-d",
+    "locator": "scene 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "reviews": [],
+  "expect": {
+   "D03-LOCK": "REVIEW"
+  }
+ },
+ {
+  "name": "breadth_review_04",
+  "locks": [
+   {
+    "finding_id": "D04-LOCK",
+    "claim": "The blacksmith's son is named Dev.",
+    "quote": "Son: Dev.",
+    "document_id": "locks-test",
+    "locator": "section 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "drafts": [
+   {
+    "finding_id": "D04-DR",
+    "claim": "draft shows a boy but never names him.",
+    "quote": "A boy ran past the forge, laughing.",
+    "document_id": "draft-d",
+    "locator": "scene 1",
+    "contradicts": null,
+    "unanswerable": "false"
+   }
+  ],
+  "reviews": [],
+  "expect": {
+   "D04-LOCK": "REVIEW"
+  }
+ }
+]

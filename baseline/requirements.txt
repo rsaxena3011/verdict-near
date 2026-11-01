@@ -1,0 +1,1 @@
+# v0 (deterministic core only — stdlib, no network). Sponsor-stack deps pin on Oct 22 recon.
