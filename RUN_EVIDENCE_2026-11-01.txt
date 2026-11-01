@@ -1,0 +1,117 @@
+C133 SLICE 1 RUN EVIDENCE — 2026-11-01 (VM local run, server on 127.0.0.1:8791, anchor backend: local)
+
+BLOCK case verdict: BLOCK | hash: b87ce8cbc17b481f8f4bfc7399f1c1d22d5c78eac647929ddc63bb6a4d2e2ad5
+
+### anchor (block)
+{
+  "anchor": {
+    "receipt_hash": "b87ce8cbc17b481f8f4bfc7399f1c1d22d5c78eac647929ddc63bb6a4d2e2ad5",
+    "verdict": "BLOCK",
+    "question": "Does draft-v9 respect the 22:00 closing lock?",
+    "anchored_at": "2026-11-01T11:13:22+00:00",
+    "backend": "local",
+    "record_id": "local-1",
+    "contract_id": null
+  },
+  "verdict": "BLOCK"
+}
+
+### verify (untampered block receipt)
+{
+  "receipt_hash": "b87ce8cbc17b481f8f4bfc7399f1c1d22d5c78eac647929ddc63bb6a4d2e2ad5",
+  "anchored": true,
+  "anchor": {
+    "receipt_hash": "b87ce8cbc17b481f8f4bfc7399f1c1d22d5c78eac647929ddc63bb6a4d2e2ad5",
+    "verdict": "BLOCK",
+    "question": "Does draft-v9 respect the 22:00 closing lock?",
+    "anchored_at": "2026-11-01T11:13:22+00:00",
+    "backend": "local",
+    "record_id": "local-1",
+    "contract_id": null
+  },
+  "hash_consistent": true,
+  "recomputed_verdict": "BLOCK",
+  "verdict_match": true,
+  "ok": true
+}
+
+### verify (TAMPERED receipt)
+{
+  "receipt_hash": "2dda61fab4c72bfc696056b6d28e17deddafe071bc06d052d23218ac2b75a592",
+  "anchored": false,
+  "anchor": null,
+  "hash_consistent": false,
+  "recomputed_verdict": "BLOCK",
+  "verdict_match": true,
+  "ok": false
+}
+
+ALLOW case verdict: ALLOW | hash: 231d3d3ea80e46c0c469c2a56f0ac08becc0aa6404616cd4e29e53b83da40693
+
+### milestone created
+{
+  "milestone_id": "ms-smoke",
+  "amount": "10",
+  "beneficiary": "cafe-operator.testnet",
+  "state": "HELD",
+  "created_at": "2026-11-01T11:13:22+00:00",
+  "released_at": null,
+  "receipt_hash": null,
+  "refusals": []
+}
+
+### release attempt with BLOCK verdict
+{
+  "released": false,
+  "reason": "verdict is BLOCK; only a verified ALLOW releases a milestone",
+  "milestone": {
+    "milestone_id": "ms-smoke",
+    "amount": "10",
+    "beneficiary": "cafe-operator.testnet",
+    "state": "HELD",
+    "created_at": "2026-11-01T11:13:22+00:00",
+    "released_at": null,
+    "receipt_hash": null,
+    "refusals": [
+      {
+        "at": "2026-11-01T11:13:22+00:00",
+        "receipt_hash": "b87ce8cbc17b481f8f4bfc7399f1c1d22d5c78eac647929ddc63bb6a4d2e2ad5",
+        "reason": "verdict is BLOCK; only a verified ALLOW releases a milestone"
+      }
+    ]
+  }
+}
+
+### release attempt with ALLOW verdict
+{
+  "released": true,
+  "reason": "verified ALLOW receipt; milestone released",
+  "milestone": {
+    "milestone_id": "ms-smoke",
+    "amount": "10",
+    "beneficiary": "cafe-operator.testnet",
+    "state": "RELEASED",
+    "created_at": "2026-11-01T11:13:22+00:00",
+    "released_at": "2026-11-01T11:13:22+00:00",
+    "receipt_hash": "231d3d3ea80e46c0c469c2a56f0ac08becc0aa6404616cd4e29e53b83da40693",
+    "refusals": [
+      {
+        "at": "2026-11-01T11:13:22+00:00",
+        "receipt_hash": "b87ce8cbc17b481f8f4bfc7399f1c1d22d5c78eac647929ddc63bb6a4d2e2ad5",
+        "reason": "verdict is BLOCK; only a verified ALLOW releases a milestone"
+      }
+    ]
+  }
+}
+
+### NEAR testnet status via server
+{
+  "anchor_backend": "local",
+  "rpc_error": null,
+  "chain_id": "testnet",
+  "latest_block_height": 275741019,
+  "latest_block_hash": "CKW41X9Q91mPQCUkfEyumGrXpkWqLmmjY6GqPA5A5cfo",
+  "protocol_version": 88
+}
+
+page bytes: 7074 | title present: True

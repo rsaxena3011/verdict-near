@@ -1,0 +1,18 @@
+{
+  "unreachable": false,
+  "findings": [
+    {
+      "id": "DR-001",
+      "claim": "The agent closed at 22:00 and handed over to Meera.",
+      "evidence": [
+        {
+          "quote": "Closed at 22:00 and handed the keys to Meera Sharma.",
+          "document_id": "draft-v9",
+          "locator": "closing report, line 3"
+        }
+      ],
+      "contradicts": [],
+      "unanswerable": false
+    }
+  ]
+}

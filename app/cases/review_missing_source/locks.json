@@ -1,0 +1,18 @@
+{
+  "unreachable": false,
+  "findings": [
+    {
+      "id": "LK-003",
+      "claim": "Restocking follows list A exactly.",
+      "evidence": [
+        {
+          "quote": "Restock exactly per list A; no substitutions.",
+          "document_id": "locks-v3",
+          "locator": "section 4"
+        }
+      ],
+      "contradicts": [],
+      "unanswerable": false
+    }
+  ]
+}

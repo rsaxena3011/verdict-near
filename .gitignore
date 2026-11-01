@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+var/
+vendor/
+.env
+near/contract/node_modules/
+near/contract/build/

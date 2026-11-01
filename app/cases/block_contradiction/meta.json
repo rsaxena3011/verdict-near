@@ -1,0 +1,7 @@
+{
+  "id": "block_contradiction",
+  "title": "Planted contradiction: draft breaks the closing lock",
+  "question": "Does draft-v9 respect the 22:00 closing lock?",
+  "expected": "BLOCK",
+  "blurb": "The draft says the cafe stayed open to 23:15. The lock says 22:00. Both sides are quoted, so the engine blocks."
+}

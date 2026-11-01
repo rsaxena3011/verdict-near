@@ -1,0 +1,33 @@
+{
+  "unreachable": false,
+  "findings": [
+    {
+      "id": "RV-001",
+      "claim": "The pacing drags.",
+      "evidence": [
+        {
+          "quote": "The closing scene reads like midnight; it drags.",
+          "document_id": "review-1",
+          "locator": "pacing note"
+        }
+      ],
+      "contradicts": [
+        "RV-002"
+      ],
+      "unanswerable": false
+    },
+    {
+      "id": "RV-002",
+      "claim": "The pacing is right.",
+      "evidence": [
+        {
+          "quote": "Pacing feels right for a closing scene.",
+          "document_id": "review-2",
+          "locator": "pacing note"
+        }
+      ],
+      "contradicts": [],
+      "unanswerable": false
+    }
+  ]
+}

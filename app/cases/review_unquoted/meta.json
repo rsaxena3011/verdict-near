@@ -1,0 +1,7 @@
+{
+  "id": "review_unquoted",
+  "title": "Unverified claim: no quote behind it",
+  "question": "Does the draft break the 22:00 closing lock?",
+  "expected": "REVIEW",
+  "blurb": "The agent asserts it closed on time but quotes no line. A claimed contradiction with an unquoted side degrades to REVIEW: the engine does not invent evidence."
+}

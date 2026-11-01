@@ -1,0 +1,7 @@
+# Optional NEAR extras. The demo surface, the verdict flow, the local
+# anchor, the milestone gate, and most tests run on the Python standard
+# library alone. Install these only for the live NEAR RPC client
+# (near/client.py) and its tests:
+requests>=2.31
+pynacl>=1.5
+base58>=2.1

@@ -1,0 +1,7 @@
+{
+  "id": "review_conflict",
+  "title": "Reviewers disagree",
+  "question": "Is the closing scene's pacing right?",
+  "expected": "REVIEW",
+  "blurb": "Two reviewers contradict each other and both are quoted. The engine shows the conflict and asks for a human read."
+}

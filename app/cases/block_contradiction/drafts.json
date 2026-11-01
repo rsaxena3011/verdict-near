@@ -1,0 +1,18 @@
+{
+  "unreachable": false,
+  "findings": [
+    {
+      "id": "DR-001",
+      "claim": "The agent kept the cafe open until 23:15.",
+      "evidence": [
+        {
+          "quote": "Last customer left at 23:15; shutters down after.",
+          "document_id": "draft-v9",
+          "locator": "closing report, line 7"
+        }
+      ],
+      "contradicts": [],
+      "unanswerable": false
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "id": "allow_consistent",
+  "title": "Consistent closing report",
+  "question": "Did the agent close the cafe job exactly as the locked terms require?",
+  "expected": "ALLOW",
+  "blurb": "The agent's report matches the locked terms and the client's note. Nothing contradicts."
+}

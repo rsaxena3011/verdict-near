@@ -1,0 +1,12 @@
+{
+  "unreachable": false,
+  "findings": [
+    {
+      "id": "DR-001",
+      "claim": "The agent says it closed on time.",
+      "evidence": [],
+      "contradicts": [],
+      "unanswerable": false
+    }
+  ]
+}

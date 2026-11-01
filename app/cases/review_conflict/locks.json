@@ -1,0 +1,18 @@
+{
+  "unreachable": false,
+  "findings": [
+    {
+      "id": "LK-004",
+      "claim": "Scene 7 exists in the current draft.",
+      "evidence": [
+        {
+          "quote": "Scene 7 is in draft-v9.",
+          "document_id": "locks-v3",
+          "locator": "scene index"
+        }
+      ],
+      "contradicts": [],
+      "unanswerable": false
+    }
+  ]
+}

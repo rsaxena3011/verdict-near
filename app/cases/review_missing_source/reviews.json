@@ -1,0 +1,18 @@
+{
+  "unreachable": false,
+  "findings": [
+    {
+      "id": "RV-003",
+      "claim": "The reviewer has not seen a storeroom report.",
+      "evidence": [
+        {
+          "quote": "No storeroom report received.",
+          "document_id": "review-3",
+          "locator": "reviewer note"
+        }
+      ],
+      "contradicts": [],
+      "unanswerable": false
+    }
+  ]
+}

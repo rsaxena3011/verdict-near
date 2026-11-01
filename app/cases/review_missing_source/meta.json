@@ -1,0 +1,7 @@
+{
+  "id": "review_missing_source",
+  "title": "A source is unreachable",
+  "question": "Did the agent restock the storeroom per the locked list?",
+  "expected": "REVIEW",
+  "blurb": "The drafts store does not answer. The engine refuses to rule on a partial federation: REVIEW, never ALLOW."
+}

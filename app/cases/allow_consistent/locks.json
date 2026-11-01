@@ -1,0 +1,31 @@
+{
+  "unreachable": false,
+  "findings": [
+    {
+      "id": "LK-001",
+      "claim": "The cafe's closing time is 22:00.",
+      "evidence": [
+        {
+          "quote": "The cafe closes at 22:00 sharp, every day.",
+          "document_id": "locks-v3",
+          "locator": "section 2, rule 4"
+        }
+      ],
+      "contradicts": [],
+      "unanswerable": false
+    },
+    {
+      "id": "LK-002",
+      "claim": "The owner is Meera Sharma.",
+      "evidence": [
+        {
+          "quote": "Owner: Meera Sharma.",
+          "document_id": "locks-v3",
+          "locator": "section 1"
+        }
+      ],
+      "contradicts": [],
+      "unanswerable": false
+    }
+  ]
+}

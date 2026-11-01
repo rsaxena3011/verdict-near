@@ -1,0 +1,18 @@
+{
+  "unreachable": false,
+  "findings": [
+    {
+      "id": "RV-001",
+      "claim": "The client confirms the closing matched the terms.",
+      "evidence": [
+        {
+          "quote": "Closing matched the agreed terms.",
+          "document_id": "review-1",
+          "locator": "client note"
+        }
+      ],
+      "contradicts": [],
+      "unanswerable": false
+    }
+  ]
+}
