@@ -1,0 +1,15 @@
+{
+  "name": "verdict-receipts-contract",
+  "version": "1.0.0",
+  "description": "VERDICT receipts anchor + milestone gate contract for NEAR testnet (C133 window work).",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "near-sdk-js build verdict_receipts.js build/verdict_receipts.wasm",
+    "setup": "bash scripts/fetch_toolchain.sh",
+    "test": "node tests/test_contract.mjs"
+  },
+  "dependencies": {
+    "near-sdk-js": "2.0.0"
+  }
+}

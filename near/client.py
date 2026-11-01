@@ -22,6 +22,7 @@ import hashlib
 import json
 import struct
 import sys
+import threading
 from pathlib import Path
 
 import requests
@@ -148,6 +149,15 @@ def sign_tx(tx_bytes: bytes, signing_key, public_key_bytes: bytes) -> bytes:
 class NearRpc:
     def __init__(self, rpc_url: str = DEFAULT_RPC):
         self.rpc_url = rpc_url
+        # Serialises signed calls from this client instance: the
+        # nonce is read from the chain and then used, so two threads
+        # doing that concurrently for the same signer would read the
+        # same nonce and one transaction would be rejected as a
+        # duplicate. The demo server is threaded and shares one
+        # NearRpc (inside NearAnchor), so the read-nonce-then-
+        # broadcast section of function_call runs under this lock
+        # (review round 1, minor: nonce race).
+        self._call_lock = threading.Lock()
 
     def _rpc(self, method: str, params) -> dict:
         resp = requests.post(
@@ -219,24 +229,25 @@ class NearRpc:
         import base58
 
         signing_key, public_key_str, pub_bytes = parse_private_key(private_key)
-        nonce = self.access_key_nonce(signer_id, public_key_str) + 1
-        status = self.status()
-        block_hash = base58.b58decode(status["latest_block_hash"])
-        tx = serialize_function_call_tx(
-            signer_id=signer_id,
-            public_key_bytes=pub_bytes,
-            nonce=nonce,
-            receiver_id=contract_id,
-            block_hash_bytes=block_hash,
-            method_name=method_name,
-            args=json.dumps(args).encode("utf-8"),
-            gas=gas,
-            deposit=deposit,
-        )
-        signed = sign_tx(tx, signing_key, pub_bytes)
-        result = self._rpc(
-            "broadcast_tx_commit", [base64.b64encode(signed).decode()]
-        )
+        with self._call_lock:
+            nonce = self.access_key_nonce(signer_id, public_key_str) + 1
+            status = self.status()
+            block_hash = base58.b58decode(status["latest_block_hash"])
+            tx = serialize_function_call_tx(
+                signer_id=signer_id,
+                public_key_bytes=pub_bytes,
+                nonce=nonce,
+                receiver_id=contract_id,
+                block_hash_bytes=block_hash,
+                method_name=method_name,
+                args=json.dumps(args).encode("utf-8"),
+                gas=gas,
+                deposit=deposit,
+            )
+            signed = sign_tx(tx, signing_key, pub_bytes)
+            result = self._rpc(
+                "broadcast_tx_commit", [base64.b64encode(signed).decode()]
+            )
         status_value = result.get("status", {})
         if "Failure" in status_value:
             raise NearError(f"tx failed: {json.dumps(status_value)[:300]}")

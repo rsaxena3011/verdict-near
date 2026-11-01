@@ -116,12 +116,16 @@ class NearAnchor:
         }
 
     def get(self, h: str) -> dict | None:
-        try:
-            record = self.rpc.view_call(
-                self.contract_id, "get_receipt", {"receipt_hash": h}
-            )
-        except Exception:
-            return None
+        # Only a genuine on-chain miss returns None. An RPC failure
+        # must NOT masquerade as "not anchored" (review round 1, M-1:
+        # the verify path and the milestone gate both read anchored as
+        # a boolean, so a swallowed outage would print a confident,
+        # wrong "not anchored" during exactly the incident a judge
+        # would probe). RPC exceptions therefore propagate: the server
+        # surfaces them as an error, which is the honest state.
+        record = self.rpc.view_call(
+            self.contract_id, "get_receipt", {"receipt_hash": h}
+        )
         if not record:
             return None
         return {
@@ -130,6 +134,12 @@ class NearAnchor:
             "question": record["question"],
             "anchored_at": record["anchored_at"],
             "backend": self.backend,
+            # record_id is the anchoring transaction hash. It is known
+            # on the write path (anchor() takes it from the broadcast
+            # result); a view call cannot recover it, and the contract
+            # stores tx_hash as null by design, so on this read path
+            # record_id is None: present-but-unknown, never invented
+            # (review round 1, minor).
             "record_id": record.get("tx_hash"),
             "contract_id": self.contract_id,
         }
