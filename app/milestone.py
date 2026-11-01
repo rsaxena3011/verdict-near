@@ -16,9 +16,15 @@ and the refusal reason is recorded on the milestone. A released
 milestone cannot release twice.
 
 State lives in a JSON file here for the standalone demo. The NEAR
-contract (near/contract/verdict_receipts.js) carries the same rules
-on chain: release_milestone checks the stored receipt's verdict before
-transferring, so the gate does not depend on this file once deployed.
+contract (near/contract/verdict_receipts.js) carries the on-chain
+SUBSET of these rules: release_milestone checks that the receipt is
+anchored in the contract and that the stored verdict is ALLOW before
+transferring. It cannot recompute the receipt hash or re-run the
+engine (checks 1 and 3 above), and its receipts are neither
+recorder-bound nor milestone-bound, so the strict gate is this file;
+the contract's release check is the weaker on-chain counterpart, a
+distinction the review rounds recorded (round 1, B3) and the deploy
+gate in DEPLOY_RUNBOOK.md governs.
 """
 
 from __future__ import annotations

@@ -149,7 +149,12 @@ class OutageRpc:
 
 class TestServerWithMockedChain(unittest.TestCase):
     """Boot the real server with NEAR_* env set, so anchor_from_env
-    selects NearAnchor, whose NearRpc is the fake."""
+    selects NearAnchor, whose NearRpc is the fake.
+
+    Design note (review round 1, m3): the tests in this class share
+    one server, one fake chain and its accumulated state, in method
+    order, on purpose: the subject is the end-to-end flow, not
+    isolated units. Run the whole file, not single methods."""
 
     @classmethod
     def setUpClass(cls):

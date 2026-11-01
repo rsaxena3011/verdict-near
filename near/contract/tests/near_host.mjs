@@ -3,14 +3,20 @@
 //
 // It implements the standard NEAR env API surface the contract
 // imports (registers, input, storage, context reads, value_return,
-// logs, and the promise-batch calls this contract uses), with
-// persistent in-memory storage across calls, exactly like the real
-// runtime: a fresh instance per call, storage survives.
+// logs, and the promise-batch calls this contract uses): a fresh
+// instance per call, storage persists across calls, and a panicking
+// call rolls its storage writes back, as the real runtime does.
 //
-// Deliberate limits, loud rather than silent: host functions this
-// contract never calls (keccak, ecrecover, alt_bn128, complex promise
-// combinators) throw if reached, so a test can never pass on a stub
-// that pretends to work.
+// Fidelity limits, stated plainly (review round 1, M6): balances are
+// not modelled (account_balance is a constant, deposits are not drawn
+// from anywhere, and recorded transfers are never executed or checked
+// against a balance), and promises are recorded as data, never
+// resolved, so promise ordering and transfer failure are outside what
+// this harness can prove. What it does prove is the contract's state
+// machine logic under the runtime's call and rollback semantics.
+// Host functions this contract never calls (keccak, ecrecover,
+// alt_bn128, complex promise combinators) throw if reached, so a
+// test can never pass on a stub that pretends to work.
 
 import { createHash } from 'node:crypto';
 
@@ -38,7 +44,7 @@ export class NearHost {
       signerAccountId: 'recorder.testnet',
       predecessorAccountId: 'recorder.testnet',
       attachedDeposit: 0n,
-      blockTimestampNs: 1762041600000000000n, // 2026-11-02T00:00:00Z
+      blockTimestampNs: 1762041600000000000n, // 2025-11-02T00:00:00Z
       blockIndex: 1000n,
     };
   }
@@ -228,10 +234,15 @@ export class NearHost {
     this.inputBytes = new TextEncoder().encode(JSON.stringify(args));
     const imports = { env: this.env() };
     this.instance = new WebAssembly.Instance(this.module, imports);
+    // Real NEAR semantics: a panicking call is atomic, its storage
+    // writes roll back. Snapshot and restore so the harness models
+    // that instead of leaking partial writes (review round 1, M6).
+    const snapshot = new Map(this.storage);
     try {
       this.instance.exports[method]();
       return { ok: true, value: this.returnValue, logs: this.logs, promises: this.promises };
     } catch (err) {
+      this.storage = snapshot;
       return { ok: false, error: String(err && err.message ? err.message : err), logs: this.logs, promises: this.promises };
     }
   }

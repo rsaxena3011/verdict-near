@@ -15,6 +15,10 @@
 //     cannot release twice.
 //
 // Run: npm test   (from near/contract/)
+//
+// Design note (review round 1, m3): this suite is one ordered
+// script against a single shared host, on purpose (the state machine
+// is the subject). Checks are not isolated units; run the whole file.
 
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -54,6 +58,7 @@ function transfers(result) {
 let r = host.call('record_receipt', { receipt_hash: H_ALLOW, verdict: 'ALLOW', question: 'Is the cafe deal consistent?' });
 check('record_receipt returns the stored record', r.ok && r.value.receipt_hash === H_ALLOW && r.value.verdict === 'ALLOW', JSON.stringify(r));
 check('record carries the recorder and no self-tx-hash claim', r.ok && r.value.recorder === 'recorder.testnet' && r.value.tx_hash === null);
+check('anchored_at is the block timestamp converted ns to ms', r.ok && r.value.anchored_at === '2025-11-02T00:00:00.000Z', JSON.stringify(r.value && r.value.anchored_at));
 
 r = host.call('get_receipt', { receipt_hash: H_ALLOW });
 check('get_receipt reads the record back', r.ok && r.value && r.value.verdict === 'ALLOW' && r.value.question === 'Is the cafe deal consistent?');
@@ -108,6 +113,10 @@ expectPanic('create assert order: deposit is checked before beneficiary and exis
 
 r = host.call('create_milestone', { milestone_id: 'ms-1', beneficiary: 'cafe-operator.testnet' }, { attachedDeposit: TEN });
 check('create_milestone holds the exact attached deposit', r.ok && r.value.state === 'HELD' && r.value.amount === TEN.toString() && r.value.beneficiary === 'cafe-operator.testnet' && r.value.receipt_hash === null, JSON.stringify(r.value));
+check('created milestone records its funder', r.ok && r.value.funder === 'recorder.testnet');
+
+r = host.call('create_milestone', { milestone_id: 'ms-dust', beneficiary: 'cafe-operator.testnet' }, { attachedDeposit: 1000n });
+expectPanic('a dust milestone below the storage floor is rejected', r, 'storage floor');
 
 r = host.call('create_milestone', { milestone_id: 'ms-1', beneficiary: 'other.testnet' }, { attachedDeposit: TEN });
 expectPanic('duplicate milestone id is rejected', r, 'already exists');
@@ -159,6 +168,25 @@ check('no second transfer happened', transfers(r).length === 0);
 
 r = host.call('get_milestone', { milestone_id: 'ms-nope' });
 check('get_milestone on an unknown id returns null', r.ok && r.value === null);
+
+// ------------------------------------------------------------ known risks
+// The next two checks pin CURRENT behaviour that review round 1
+// rated BLOCKER (B1, B2). They are expected to FAIL the day the
+// deploy-slice fix lands (recorder trust / milestone binding), and
+// that failure is the signal to update them. Until then they keep
+// the exposure executable and undeniable, behind the deploy gate in
+// DEPLOY_RUNBOOK.md: this contract must not be pitched as a verified
+// escrow gate while these pass.
+
+const H_POISON = '9'.repeat(64);
+r = host.call('record_receipt', { receipt_hash: H_POISON, verdict: 'ALLOW' }, { predecessorAccountId: 'attacker.testnet' });
+check('KNOWN RISK B1: an attacker can record a hash first, with their own verdict', r.ok && r.value.verdict === 'ALLOW' && r.value.recorder === 'attacker.testnet');
+r = host.call('record_receipt', { receipt_hash: H_POISON, verdict: 'BLOCK' });
+check('KNOWN RISK B1: the genuine later record cannot displace the poisoned one', r.ok && r.value.verdict === 'ALLOW');
+
+host.call('create_milestone', { milestone_id: 'ms-replay', beneficiary: 'cafe-operator.testnet' }, { attachedDeposit: TEN });
+r = host.call('release_milestone', { milestone_id: 'ms-replay', receipt_hash: H_ALLOW });
+check('KNOWN RISK B2: one ALLOW receipt can release an unrelated milestone', r.ok && r.value.state === 'RELEASED');
 
 console.log(`\ncontract tests: ${passed} passed, ${failed} failed`);
 process.exit(failed === 0 ? 0 : 1);

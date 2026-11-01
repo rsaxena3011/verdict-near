@@ -1,17 +1,19 @@
 """Anchoring: record a receipt hash somewhere the verdict's author
 cannot quietly rewrite it.
 
-WINDOW WORK (C133, built 2026-11-01). Two backends share one record
-shape, the same shape the NEAR contract stores:
+WINDOW WORK (C133, built 2026-11-01). The two backends share the
+receipt fields below; they are not claimed identical (review round
+1, M10): the on-chain record additionally carries the recorder, and
+the local record's record_id is a log position while the NEAR one is
+a transaction hash on the write path and unknown on the read path.
 
     {"receipt_hash", "verdict", "question", "anchored_at",
      "backend", "record_id", "contract_id"}
 
 - LocalAnchorLog: append-only JSONL file (one JSON object per line).
   This is the offline default: the demo runs end to end with no
-  network and no account, and the record format is identical to the
-  on-chain one, so the verify path does not change when the backend
-  does.
+  network and no account, and the shared fields mean the verify path
+  does not change shape when the backend does.
 - NearAnchor: record_receipt / get_receipt on the verdict_receipts
   contract (near/contract/) over NEAR testnet RPC. Active only when
   NEAR_ACCOUNT_ID, NEAR_PRIVATE_KEY and NEAR_CONTRACT_ID are set.
@@ -105,6 +107,16 @@ class NearAnchor:
                 "question": receipt.get("question", ""),
             },
         )
+        # Read the stored record back (review round 1, M10): report
+        # what the chain actually holds, not the locally computed
+        # values. If another writer won the first-writer race, the
+        # stored verdict differs from the one just computed, and the
+        # caller must see that. Fall back to the local record only if
+        # the read comes back empty (indexing lag).
+        stored = self.get(h)
+        if stored is not None:
+            stored["record_id"] = result["transaction"]["hash"]
+            return stored
         return {
             "receipt_hash": h,
             "verdict": verdict,
@@ -141,6 +153,11 @@ class NearAnchor:
             # record_id is None: present-but-unknown, never invented
             # (review round 1, minor).
             "record_id": record.get("tx_hash"),
+            # Who anchored this receipt on chain. The local backend
+            # has no such field; dropping it here would hide exactly
+            # the provenance the verify surface exists to show
+            # (review round 1, M10).
+            "recorder": record.get("recorder"),
             "contract_id": self.contract_id,
         }
 
