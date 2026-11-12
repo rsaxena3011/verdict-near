@@ -131,21 +131,30 @@ hackathon rules require.
   section will name it before filing. (Placeholder to resolve at
   filing time; a single-project entry deletes this bullet.)
 
-## Status and honest limits (at slice 1, 2026-11-01)
+## Status and honest limits (updated 2026-11-12, testnet deploy live)
 
-- The demo flow above runs end to end today, offline, against the
-  local anchor log. Run evidence: RUN_EVIDENCE_2026-11-01.txt.
-- The NEAR RPC client is verified live against testnet (status call).
-  Signed calls are implemented and unit-tested for key handling and
-  serialisation, but no transaction has been broadcast yet.
-- The contract is complete source, not yet compiled or deployed: the
-  deploy step needs a funded NEAR testnet account (faucet) and the
-  near-sdk-js build, and is scheduled before filing. Until then, no
-  claim in this README says a receipt is on chain; the anchor backend
-  line in the demo says which backend recorded each receipt.
+- Contract deployed to NEAR testnet: `verdict.ratnesh3011.testnet`,
+  deploy tx `FKKGXYHysBo7myB1Cs8tdNSmt3TcFTZwfc4zf7iHM1ro`
+  (https://testnet.nearblocks.io/txns/FKKGXYHysBo7myB1Cs8tdNSmt3TcFTZwfc4zf7iHM1ro),
+  account https://testnet.nearblocks.io/address/verdict.ratnesh3011.testnet.
+- First on-chain anchor: BLOCK receipt
+  `b87ce8cbc17b481f8f4bfc7399f1c1d22d5c78eac647929ddc63bb6a4d2e2ad5`,
+  anchor tx `5fT2WYVspbyjLNc3UwpwpmYD1gTWvVzQzSKL1Hgy1w33`
+  (https://testnet.nearblocks.io/txns/5fT2WYVspbyjLNc3UwpwpmYD1gTWvVzQzSKL1Hgy1w33),
+  recorder `ratnesh3011.testnet`, anchored 2026-11-12T17:18:45Z.
+  Independent read-back via `near view ... get_receipt` returns the same
+  record; the third-party re-check through the demo surface returns
+  ok / anchored / verdict_match all true; a tampered receipt fails the
+  check. Run evidence: RUN_EVIDENCE_2026-11-12.txt.
+- Honest claim, narrowed per the deploy gate: this is an
+  anchored-verdict release check, not an on-chain escrow demo. The
+  on-chain milestone gate is permissionless and unbound (known risks
+  B1/B2: anyone can record a hash first; one ALLOW can release any
+  milestone) — the strict re-check lives in the demo layer. No claim in
+  this README presents the contract as escrow.
 - Testnet only. No mainnet spend anywhere in this project. The prize
-  payout address on the submission form is a separate mainnet account
-  created by the team lead.
+  payout address on the submission form is a separate mainnet implicit
+  account created by the team lead.
 
 ## Layout
 

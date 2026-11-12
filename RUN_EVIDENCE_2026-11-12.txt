@@ -1,0 +1,35 @@
+VERDICT x NEAR — testnet deploy run evidence, 2026-11-12 (IST, UTC+5:30)
+
+Account: ratnesh3011.testnet (created via testnet helper, tx iLqrJoKWKvKgNDV2Ptn1bYb8pEaFP34viWuX1PB1oQJ; funded 10 NEAR).
+Note: ratnesh.testnet was already taken; first fallback ratnesh3011.testnet used.
+Contract subaccount: verdict.ratnesh3011.testnet, funded 9.9 NEAR (10 NEAR was 0.0076 short of the 10.0076 creation cost; faucet APIs probed, no usable endpoint; 9.9 preserves the M7 margin: ~5.4 NEAR code-storage lock, ~4.5 NEAR headroom).
+Deploy tx: FKKGXYHysBo7myB1Cs8tdNSmt3TcFTZwfc4zf7iHM1ro
+Explorer: https://testnet.nearblocks.io/txns/FKKGXYHysBo7myB1Cs8tdNSmt3TcFTZwfc4zf7iHM1ro
+Contract account: https://testnet.nearblocks.io/address/verdict.ratnesh3011.testnet
+
+Pre-deploy suites (all green before deploy): contract 41/41, window 16/16, baseline 7/7. near-cli@4.0.13.
+
+== Step 5: /api/investigate (block_contradiction) ==
+{"verdict": "BLOCK", "reason": "Draft breaks lock locks-v3: lock says \"The cafe closes at 22:00 sharp, every day.\" (section 2, rule 4), draft says \"Last customer left at 23:15; shutters down after.\" (closing report, line 7).", "receipt": {"question": "Does draft-v9 respect the 22:00 closing lock?", "missing_sources": [], "notes": ["offline replay: findings from connected sources only"], "findings": [{"id": "LK-001", "claim": "The cafe's closing time is 22:00.", "contradicts": ["DR-001"], "unanswerable": false, "evidence": [{"quote": "The cafe closes at 22:00 sharp, every day.", "source": "locks", "document_id": "locks-v3", "locator": "section 2, rule 4"}]}, {"id": "DR-001", "claim": "The agent kept the cafe open until 23:15.", "contradicts": [], "unanswerable": false, "evidence": [{"quote": "Last customer left at 23:15; shutters down after.", "source": "drafts", "document_id": "draft-v9", "locator": "closing report, line 7"}]}]}, "receipt_hash": "b87ce8cbc17b481f8f4bfc7399f1c1d22d5c78eac647929ddc63bb6a4d2e2ad5"}
+
+== Step 5: /api/anchor (block_contradiction) ==
+{"anchor": {"receipt_hash": "b87ce8cbc17b481f8f4bfc7399f1c1d22d5c78eac647929ddc63bb6a4d2e2ad5", "verdict": "BLOCK", "question": "Does draft-v9 respect the 22:00 closing lock?", "anchored_at": "2026-11-12T17:18:45.744Z", "backend": "near-testnet", "record_id": "5fT2WYVspbyjLNc3UwpwpmYD1gTWvVzQzSKL1Hgy1w33", "recorder": "ratnesh3011.testnet", "contract_id": "verdict.ratnesh3011.testnet"}, "verdict": "BLOCK"}
+
+== Step 6: near view get_receipt ==
+View call: verdict.ratnesh3011.testnet.get_receipt({"receipt_hash":"b87ce8cbc17b481f8f4bfc7399f1c1d22d5c78eac647929ddc63bb6a4d2e2ad5"})
+{
+  receipt_hash: 'b87ce8cbc17b481f8f4bfc7399f1c1d22d5c78eac647929ddc63bb6a4d2e2ad5',
+  verdict: 'BLOCK',
+  question: 'Does draft-v9 respect the 22:00 closing lock?',
+  recorder: 'ratnesh3011.testnet',
+  anchored_at: '2026-11-12T17:18:45.744Z',
+  tx_hash: null
+}
+
+== Step 6: /api/verify (genuine receipt) ==
+{"receipt_hash": "b87ce8cbc17b481f8f4bfc7399f1c1d22d5c78eac647929ddc63bb6a4d2e2ad5", "anchored": true, "anchor": {"receipt_hash": "b87ce8cbc17b481f8f4bfc7399f1c1d22d5c78eac647929ddc63bb6a4d2e2ad5", "verdict": "BLOCK", "question": "Does draft-v9 respect the 22:00 closing lock?", "anchored_at": "2026-11-12T17:18:45.744Z", "backend": "near-testnet", "record_id": null, "recorder": "ratnesh3011.testnet", "contract_id": "verdict.ratnesh3011.testnet"}, "hash_consistent": true, "recomputed_verdict": "BLOCK", "verdict_match": true, "ok": true}
+
+== Step 6: /api/verify (tampered receipt, one char changed in a quote) ==
+{"receipt_hash": "230257c33b95b8a3e2896dac94b103ac1d573ca155d09545e39ee399169fe196", "anchored": false, "anchor": null, "hash_consistent": false, "recomputed_verdict": "BLOCK", "verdict_match": true, "ok": false}
+
+Claim scope (deploy gate): anchored-verdict release check only. NOT presented as an on-chain escrow demo (known risks B1/B2 unbound gate, M1, M2).
