@@ -46,35 +46,37 @@ Requires Python 3.10+ only. Everything in this section runs offline.
    See: `OK` (7 tests). This is the unmodified baseline suite.
 2. Run the window-work tests.
    Do: `python3 -m unittest discover -s tests`
-   See: `OK` (10 tests; the 2 NEAR-client tests skip unless the NEAR
-   extras are installed — step 5).
-3. Start the demo surface.
+   See: `OK` (16 tests; re-verified 2026-11-12).
+3. Run the contract tests.
+   Do: `cd near/contract && npm test`
+   See: `contract tests: 41 passed, 0 failed` (re-verified 2026-11-12).
+4. Start the demo surface.
    Do: `python3 app/server.py`
    See: `VERDICT x NEAR demo on http://127.0.0.1:8791 (anchor backend: local)`.
-4. Investigate the planted contradiction.
+5. Investigate the planted contradiction.
    Do: open http://127.0.0.1:8791 and click "Planted contradiction:
    draft breaks the closing lock", or
    `curl -s -X POST localhost:8791/api/investigate -d '{"case":"block_contradiction"}'`
    See: verdict `BLOCK`, the reason quoting both sides ("closes at
    22:00 sharp" vs "Last customer left at 23:15"), and a receipt hash.
-5. Anchor and re-check.
+6. Anchor and re-check.
    Do: click "Anchor this receipt", then "Verify receipt".
    See: an anchor record (`local-1`, backend `local`) and a re-check
    with hash matched, anchored YES, engine re-run reproduces BLOCK,
    overall VERIFIED. Click "Verify a TAMPERED copy": overall FAILED.
-6. Work the milestone gate.
+7. Work the milestone gate.
    Do: "Create milestone (HELD)", then "Attempt release with the
    current case's verdict" while the BLOCK case is selected.
    See: REFUSED, state stays HELD. Investigate "Consistent closing
    report" (ALLOW), anchor it via the release flow, attempt release
    again: RELEASED. A milestone releases once.
-7. (Optional) Talk to NEAR testnet.
+8. (Optional) Talk to NEAR testnet.
    Do: `pip install -r requirements-near.txt`, restart the server,
    open the page header or `curl -s localhost:8791/api/near/status`.
    See: `chain_id: testnet` with a current block height, fetched live
    from https://rpc.testnet.near.org.
 
-A recorded transcript of steps 4–7 is in RUN_EVIDENCE_2026-11-01.txt.
+A recorded transcript of steps 5–8 is in RUN_EVIDENCE_2026-11-01.txt.
 
 ## How it works
 
